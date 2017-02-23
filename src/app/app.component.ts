@@ -5,6 +5,7 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 import { Page1 } from '../pages/page1/page1';
 import { Page2 } from '../pages/page2/page2';
 import { MapPage } from '../pages/map/map';
+import { MainPage } from '../pages/mainpage/mainpage';
 
 
 
@@ -14,7 +15,7 @@ import { MapPage } from '../pages/map/map';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = MapPage;
+  rootPage: any = MainPage;
 
   pages: Array<{title: string, component: any}>;
 

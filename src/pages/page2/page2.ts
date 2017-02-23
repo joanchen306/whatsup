@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 @Component({
-  selector: 'page-page2',
+  selector: 'friends-list',
   templateUrl: 'page2.html'
 })
 export class Page2 {
