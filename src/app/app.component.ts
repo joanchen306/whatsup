@@ -3,7 +3,7 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { Page1 } from '../pages/page1/page1';
-import { Page2 } from '../pages/page2/page2';
+import { FriendsPage } from '../pages/friends/friends';
 import { MapPage } from '../pages/map/map';
 import { MainPage } from '../pages/mainpage/mainpage';
 
@@ -25,7 +25,7 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'WhatsApp', component: Page1 },
-      { title: 'Page Two', component: Page2 },
+      { title: 'Friends', component: FriendsPage },
       { title: 'Map', component: MapPage }
 
     ];
