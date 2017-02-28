@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, Platform } from 'ionic-angular';
-import { GoogleMap, GoogleMapsEvent, GoogleMapsLatLng } from 'ionic-native';
+import { GoogleMap, GoogleMapsEvent, GoogleMapsLatLng, Geolocation } from 'ionic-native';
 
 @Component({
   selector: 'map-page',
@@ -17,8 +17,9 @@ export class MapPage {
     }
 
     loadMap(){
+      Geolocation.getCurrentPosition().then((position) => {
+        let latLng = new GoogleMapsLatLng(position.coords.latitude, position.coords.longitude);
 
-        let location = new GoogleMapsLatLng(-34.9290,138.6010);
 
         this.map = new GoogleMap('map', {
           'backgroundColor': 'white',
@@ -35,7 +36,7 @@ export class MapPage {
             'zoom': true
           },
           'camera': {
-            'latLng': location,
+            'latLng': latLng,
             'tilt': 30,
             'zoom': 15,
             'bearing': 50
@@ -44,6 +45,9 @@ export class MapPage {
 
         this.map.on(GoogleMapsEvent.MAP_READY).subscribe(() => {
             console.log('Map is ready!');
+        });
+        }, (err) => {
+          console.log(err);
         });
 
     }
