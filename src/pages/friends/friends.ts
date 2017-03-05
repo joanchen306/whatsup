@@ -9,7 +9,10 @@ import { NavController, NavParams } from 'ionic-angular';
 export class FriendsPage {
   selectedItem: any;
   icons: string[];
-  items: Array<{title: string, note: string, icon: string}>;
+  fnames: string[];
+  lnames: string[];
+  tf: boolean[];
+  friends: Array<{name: string, active: boolean, distance:number, icon: string}>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     // If we navigated to this page, we will have an item available as a nav param
@@ -19,11 +22,16 @@ export class FriendsPage {
     this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
     'american-football', 'boat', 'bluetooth', 'build'];
 
-    this.items = [];
+    this.fnames = ['Aaron','Ryan','John','Will','Alice','Brandi','Joan','Mark',
+    'Andrew','Austin','Luke','Matt','Lauren','Bianca'];
+    this.lnames = ['Parry','James','Goldstein','Brooks','Chen','Christian','Lee','Smith'];
+    this.tf = [true,false]
+    this.friends = [];
     for (let i = 1; i < 35; i++) {
-      this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
+      this.friends.push({
+        name: this.fnames[Math.floor(Math.random() * this.fnames.length)] + " " + this.lnames[Math.floor(Math.random() * this.lnames.length)],
+        active: this.tf[Math.floor(Math.random() * this.tf.length)],
+        distance:Math.random()*10,
         icon: this.icons[Math.floor(Math.random() * this.icons.length)]
       });
     }
