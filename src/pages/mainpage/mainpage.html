@@ -5,12 +5,13 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-slides>
+  <ion-slides initialSlide="1" (ionSlideDidChange)="onSlideDidChange()">
     <ion-slide>
       <friends-list></friends-list>
     </ion-slide>
     <ion-slide>
-      <div class="swipe left"></div>
+      <div #swipeRightWrap class="swipe right" (swiperight)="goToSlide(FRIENDS_SLIDE_INDEX)"></div>
+      <div #swipeLeftWrap class="swipe left" (swipeleft)="goToSlide(EVENTS_LIST_SLIDE_INDEX)"></div>
       <map-page></map-page>
     </ion-slide>
     <ion-slide>

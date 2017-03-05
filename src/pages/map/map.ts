@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+
 import { NavController, Platform } from 'ionic-angular';
-import { GoogleMap, GoogleMapsEvent, GoogleMapsLatLng } from 'ionic-native';
+
+declare var google;
 
 @Component({
   selector: 'map-page',
@@ -8,43 +10,24 @@ import { GoogleMap, GoogleMapsEvent, GoogleMapsLatLng } from 'ionic-native';
 })
 export class MapPage {
 
-    map: GoogleMap;
+    @ViewChild('map') mapElement;
+    map: any;
 
     constructor(public navCtrl: NavController, public platform: Platform) {
         platform.ready().then(() => {
-            this.loadMap();
+            this.initMap();
         });
     }
 
-    loadMap(){
+    initMap() {
+      let latLng = new google.maps.LatLng(33.7756, -84.3963);
 
-        let location = new GoogleMapsLatLng(-34.9290,138.6010);
+      let mapOptions = {
+        center: latLng,
+        zoom: 15,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
 
-        this.map = new GoogleMap('map', {
-          'backgroundColor': 'white',
-          'controls': {
-            'compass': true,
-            'myLocationButton': true,
-            'indoorPicker': true,
-            'zoom': true
-          },
-          'gestures': {
-            'scroll': true,
-            'tilt': true,
-            'rotate': true,
-            'zoom': true
-          },
-          'camera': {
-            'latLng': location,
-            'tilt': 30,
-            'zoom': 15,
-            'bearing': 50
-          }
-        });
-
-        this.map.on(GoogleMapsEvent.MAP_READY).subscribe(() => {
-            console.log('Map is ready!');
-        });
-
+      this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
     }
 }
