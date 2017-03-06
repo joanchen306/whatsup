@@ -1,0 +1,16 @@
+<ion-content>
+  <ion-list>
+    <button ion-item *ngFor="let event of events" >
+      <h5>
+        {{event.name}}
+      </h5>
+      <p>{{event.description}}</p>
+      <div class="event-dist" item-right>
+        {{event.distance | number : '1.2-2'}} mi
+      </div>
+    </button>
+  </ion-list>
+  <!-- <div *ngIf="selectedItem" padding>
+    You navigated here from <b>{{selectedItem.title}}</b>
+  </div> -->
+</ion-content>
