@@ -18,6 +18,7 @@ export class MapPage implements OnInit {
     }
 
     ngOnInit() {
+      
     }
 
     ngAfterViewInit() {
@@ -65,6 +66,7 @@ export class MapPage implements OnInit {
       let latLng = new google.maps.LatLng(lat, long);
 
       this.map.setCenter(latLng);
+      this.map.setZoom(15);
     }
 
     showError(error) {
