@@ -12,14 +12,13 @@ export class MapPage implements OnInit {
 
     @ViewChild('map') mapElement;
     map: any;
+    userMarker: any;
 
     constructor(public navCtrl: NavController, public platform: Platform, public toastCtrl: ToastController) {
 
     }
 
-    ngOnInit() {
-      
-    }
+    ngOnInit() {}
 
     ngAfterViewInit() {
       this.initMap();
@@ -36,7 +35,7 @@ export class MapPage implements OnInit {
         zoom: 15,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         disableDefaultUI: true,
-        zoomControl: true,
+        //zoomControl: true,
       };
 
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
@@ -63,10 +62,25 @@ export class MapPage implements OnInit {
       let lat = position.coords.latitude;
       let long = position.coords.longitude;
 
+      if (this.userMarker != null) {
+        this.userMarker.setMap(null);
+      }
       let latLng = new google.maps.LatLng(lat, long);
+
+      this.userMarker = new google.maps.Marker({
+        position: latLng,
+        map: this.map,
+        icon: {
+            path: google.maps.SymbolPath.CIRCLE,
+            scale: 10
+          },
+        title: 'My location'
+      });
 
       this.map.setCenter(latLng);
       this.map.setZoom(15);
+
+      this.userMarker.setMap(this.map);
     }
 
     showError(error) {
