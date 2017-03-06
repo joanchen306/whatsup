@@ -2,7 +2,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 import { MyApp } from './app.component';
-import { Page1 } from '../pages/page1/page1';
+import { EventsPage } from '../pages/events/events';
 import { FriendsPage } from '../pages/friends/friends';
 import { MapPage } from '../pages/map/map';
 import { MainPage } from '../pages/mainpage/mainpage';
@@ -17,7 +17,7 @@ const cloudSettings: CloudSettings = {
 @NgModule({
   declarations: [
     MyApp,
-    Page1,
+    EventsPage,
     FriendsPage,
     MapPage,
     MainPage
@@ -29,7 +29,7 @@ const cloudSettings: CloudSettings = {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    Page1,
+    EventsPage,
     FriendsPage,
     MapPage,
     MainPage

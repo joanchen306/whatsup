@@ -4,9 +4,9 @@ import { NavController } from 'ionic-angular';
 
 @Component({
   selector: 'event-list',
-  templateUrl: 'page1.html'
+  templateUrl: 'events.html'
 })
-export class Page1 {
+export class EventsPage {
 
   constructor(public navCtrl: NavController) {
 
