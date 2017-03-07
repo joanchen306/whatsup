@@ -6,3 +6,26 @@ friends-list {
     color: red;
   }
 }
+
+ion-content { 
+  background-color: #000;
+  .item-md {
+    background-color: #000;
+
+    ion-icon { 
+      color: #fff;
+    }
+
+    p {
+      color: #fff;
+    }
+  }
+
+  .item-md.activated {
+    background-color: #515171;
+  }
+
+  .friend-dist { 
+    color: #fff;
+  }
+}
