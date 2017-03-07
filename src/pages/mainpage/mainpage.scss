@@ -31,3 +31,31 @@ left action not screen location */
 .left {
   right: 0;
 }
+
+.toolbar-background, .toolbar-background-ios { 
+  background-color: rgba(0, 0, 0, 1) !important;
+  color: #ffffff !important;
+}
+
+#search-toolbar { 
+  padding:0;
+}
+
+.title, .title-ios {
+  padding-left: 1em !important;
+}
+
+.toolbar-title, .toolbar-title-ios {
+  color: #fff !important;
+  text-align: left !important;
+  padding-left: 3;
+}
+
+#search-icon{
+  position: absolute;
+  right: 1em;
+}
+
+#profile-icon{
+  margin-right: .5em;
+}
