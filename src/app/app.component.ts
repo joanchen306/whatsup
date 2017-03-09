@@ -1,13 +1,12 @@
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
-import { StatusBar, Splashscreen } from 'ionic-native';
+import { StatusBar, Splashscreen, NativeStorage } from 'ionic-native';
 
 import { EventsPage } from '../pages/events/events';
 import { FriendsPage } from '../pages/friends/friends';
 import { MapPage } from '../pages/map/map';
 import { MainPage } from '../pages/mainpage/mainpage';
-
-
+import { LoginPage } from '../pages/login/login';
 
 @Component({
   templateUrl: 'app.html'
@@ -15,7 +14,7 @@ import { MainPage } from '../pages/mainpage/mainpage';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = MainPage;
+  rootPage: any = LoginPage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -26,18 +25,28 @@ export class MyApp {
     this.pages = [
       { title: 'WhatsApp', component: EventsPage },
       { title: 'Friends', component: FriendsPage },
-      { title: 'Map', component: MapPage }
-
+      { title: 'Map', component: MapPage },
+      { title: 'Login', component: LoginPage }
     ];
-
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
+      let env = this;
+      NativeStorage.getItem('user')
+      .then( function (data) {
+        //User was previously logged in
+        env.nav.push(MainPage);
+        Splashscreen.hide();
+      }, function (error) {
+        //User data not found locally
+        env.nav.push(LoginPage);
+        Splashscreen.hide();
+      });
+
       StatusBar.styleDefault();
-      Splashscreen.hide();
     });
   }
 
