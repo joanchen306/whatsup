@@ -35,7 +35,7 @@ export class MapPage implements OnInit {
         zoom: 15,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         disableDefaultUI: true,
-        //zoomControl: true,
+        zoomControl: true,
         styles: [
             {
                 "featureType": "all",
@@ -153,7 +153,7 @@ export class MapPage implements OnInit {
                         "color": "#5a60ac"
                     },
                     {
-                        "weight": "3.79"
+                        "weight": "1.77"
                     }
                 ]
             },
@@ -175,6 +175,24 @@ export class MapPage implements OnInit {
                 "stylers": [
                     {
                         "visibility": "on"
+                    }
+                ]
+            },
+            {
+                "featureType": "road.highway",
+                "elementType": "geometry",
+                "stylers": [
+                    {
+                        "weight": "2.63"
+                    }
+                ]
+            },
+            {
+                "featureType": "road.highway",
+                "elementType": "geometry.fill",
+                "stylers": [
+                    {
+                        "color": "#00f6ff"
                     }
                 ]
             },
@@ -243,8 +261,6 @@ export class MapPage implements OnInit {
       });
 
       this.map.setCenter(latLng);
-      this.map.setZoom(15);
-
       this.userMarker.setMap(this.map);
     }
 
@@ -268,22 +284,16 @@ export class MapPage implements OnInit {
     findMeControl(findMeControlDiv, map) {
       // Set CSS for the control border.
       var findMeControlUI = document.createElement('div');
-      findMeControlUI.style.backgroundColor = '#fff';
-      findMeControlUI.style.border = '2px solid #fff';
-      findMeControlUI.style.borderRadius = '3px';
-      findMeControlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
-      findMeControlUI.style.cursor = 'pointer';
-      findMeControlUI.style.marginBottom = '22px';
-      findMeControlUI.style.textAlign = 'center';
+      findMeControlUI.id = 'findMe'
       findMeControlUI.title = 'Click to find your location';
       findMeControlDiv.appendChild(findMeControlUI);
 
       // Set CSS for the control interior.
       var findMeControlText = document.createElement('div');
-      findMeControlText.style.color = 'rgb(25,25,25)';
+      findMeControlText.style.color = 'white';
       findMeControlText.style.fontFamily = 'Roboto,Arial,sans-serif';
       findMeControlText.style.fontSize = '16px';
-      findMeControlText.style.lineHeight = '38px';
+      findMeControlText.style.lineHeight = '40px';
       findMeControlText.style.paddingLeft = '5px';
       findMeControlText.style.paddingRight = '5px';
       findMeControlText.innerHTML = 'ME';
