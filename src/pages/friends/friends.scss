@@ -9,8 +9,8 @@ friends-list {
 
 ion-content { 
   background-color: #000;
-  .item-md {
-    background-color: #000;
+  .item-md, .item-ios, .item{
+    background-color: #000 !important;
 
     ion-icon { 
       color: #fff;
@@ -29,3 +29,4 @@ ion-content {
     color: #fff;
   }
 }
+

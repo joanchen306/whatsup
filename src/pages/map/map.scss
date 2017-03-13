@@ -7,4 +7,48 @@ map-page {
     #map {
         height: 100%;
     }
+
+    #findMe {
+        background-color: rgba(100, 150, 230, 0.85);
+        width: 40px;
+        height: 40px;
+        border-radius: 60px;
+        position: absolute;
+        left: 230px;
+        bottom: 470px;
+        z-index: 1000;
+        text-align: center;
+        font-size: 10px;
+        padding: 5%;
+
+        color: white;
+
+        font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: 500;
+        line-height: 26.4px;
+    }
+
+    #findMe:hover {
+        background-color:rgba(100, 150, 230, 1.0);
+        width: 40px;
+        height: 40px;
+        border-radius: 60px;
+        position: absolute;
+        left: 230px;
+        bottom: 470px;
+        z-index: 1000;
+        text-align: center;
+        font-size: 10px;
+        padding: 5%;
+
+        color: white;
+
+        font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: 500;
+        line-height: 26.4px;
+    }
 }
