@@ -1,7 +1,24 @@
-<ion-header no-border>
-  <ion-toolbar id="search-toolbar">
-    <ion-title>  <ion-icon id="profile-icon" ios="ios-contact" md="md-contact"></ion-icon> WhatsUp  <ion-icon id="search-icon" ios="ios-search" md="md-search"></ion-icon> </ion-title>
-  </ion-toolbar>
+<ion-view class="perks-feed-view" hide-back-button="true" hide-nav-bar="true">
+<ion-header-bar class="bar-dark bar bar-header">
+<div class="buttons buttons-left header-item">
+<span class="left-buttons">
+<button class="button button-icon button-clear ion-ios-drag" menu-toggle="left">
+</button>
+</span>
+</div>
+<div class="item item-input-inset">
+<label class="item-input-wrapper">
+<input type="text" placeholder="Search Business">
+</label>
+<span class="button button-small" ng-click="filterFeed()">
+<i class="icon ion-search placeholder-icon"></i>
+</span>
+<span class="button button-small" ng-click="filterFeed()">
+<i class="icon ion-ios-albums-outline placeholder-icon"></i>
+</span>
+</div>
+</ion-header-bar>
+
 </ion-header>
 
 <ion-content padding>
