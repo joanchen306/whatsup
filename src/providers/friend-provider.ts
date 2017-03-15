@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { Facebook, NativeStorage } from 'ionic-native';
 import 'rxjs/add/operator/map';
 
 /*
@@ -10,9 +11,33 @@ import 'rxjs/add/operator/map';
 */
 @Injectable()
 export class FriendProvider {
+  data: any;
+  user: any;
 
   constructor(public http: Http) {
-    console.log('Hello FriendProvider Provider');
+    this.data = null;
   }
+
+  public getAllFriends(): string[] {
+    this.user = NativeStorage.getItem('user');
+
+    if (this.user != null) {
+      Facebook.api("/" + this.user.id + "/friends", [])
+        .then(function(friends) {
+          alert("Provider received: " + friends);
+          return friends;
+        }, function (error) {
+          alert("ERROR: " + error + " USERID: " + this.user.id);
+          return null;
+        });
+    }
+
+    return null;
+  }
+
+  getFriend(id) {
+    // TODO
+  }
+
 
 }

@@ -1,22 +1,27 @@
 import { Component } from '@angular/core';
-
+import { FriendProvider } from '../../providers/friend-provider';
 import { NavController, NavParams } from 'ionic-angular';
 
 @Component({
   selector: 'friends-list',
-  templateUrl: 'friends.html'
+  templateUrl: 'friends.html',
+  providers: [FriendProvider]
 })
 export class FriendsPage {
   selectedItem: any;
+  friendsIds: string[];
   icons: string[];
   fnames: string[];
   lnames: string[];
   tf: boolean[];
   friends: Array<{name: string, active: boolean, distance:number, icon: string}>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public friendProvider: FriendProvider) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
+
+    this.friendsIds = friendProvider.getAllFriends();
+    alert("IDS: " + this.friendsIds);
 
     // Let's populate this page with some filler content for funzies
     this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',

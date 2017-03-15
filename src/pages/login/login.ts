@@ -16,8 +16,7 @@ export class LoginPage {
 
   facebookLogin() {
     let nav = this.navCtrl;
-    let permissions = new Array();
-    permissions = ["public_profile", "user_events", "user_friends"];
+    let permissions = ["public_profile", "user_events", "user_friends"];
 
     Facebook.login(permissions)
     .then( function (response) {
@@ -28,15 +27,16 @@ export class LoginPage {
       let params = new Array();
 
       //Getting name and gender properties
-      Facebook.api("/me?fields=name,gender", params)
+      Facebook.api("/me?fields=id,name,gender", params)
       .then(function(user) {
         user.picture = "https://graph.facebook.com/" + userId + "/picture?type=large";
         //now we have the users info, let's save it in the NativeStorage
         NativeStorage.setItem('user',
         {
+          id: user.id,
           name: user.name,
           gender: user.gender,
-          picture: user.picture
+          picture: user.picture,
         })
         .then(function(){
           nav.push(MainPage);
