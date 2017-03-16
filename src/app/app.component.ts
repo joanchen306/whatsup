@@ -19,7 +19,6 @@ export class MyApp {
   pages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform) {
-    this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
@@ -28,6 +27,8 @@ export class MyApp {
       { title: 'Map', component: MapPage },
       { title: 'Login', component: LoginPage }
     ];
+
+    this.initializeApp();
   }
 
   initializeApp() {
@@ -38,6 +39,7 @@ export class MyApp {
       NativeStorage.getItem('user')
       .then( function (data) {
         //User was previously logged in
+        // TODO: Trigger Facebook login refresh
         env.nav.push(MainPage);
         Splashscreen.hide();
       }, function (error) {
