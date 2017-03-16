@@ -20,7 +20,7 @@ export class FriendsPage {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
 
-    this.friendsIds = friendProvider.getAllFriends();
+    friendProvider.getAllFriends(this.friendsIds);
     alert("IDS: " + this.friendsIds);
 
     // Let's populate this page with some filler content for funzies
