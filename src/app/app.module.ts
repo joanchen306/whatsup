@@ -6,11 +6,16 @@ import { EventsPage } from '../pages/events/events';
 import { FriendsPage } from '../pages/friends/friends';
 import { MapPage } from '../pages/map/map';
 import { MainPage } from '../pages/mainpage/mainpage';
-
+import { LoginPage } from '../pages/login/login';
 
 const cloudSettings: CloudSettings = {
   'core': {
     'app_id': '90d65db5'
+  },
+  'auth': {
+    'facebook': {
+      'scope': ['public_profile']
+    }
   }
 }
 
@@ -20,7 +25,8 @@ const cloudSettings: CloudSettings = {
     EventsPage,
     FriendsPage,
     MapPage,
-    MainPage
+    MainPage,
+    LoginPage,
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -32,7 +38,8 @@ const cloudSettings: CloudSettings = {
     EventsPage,
     FriendsPage,
     MapPage,
-    MainPage
+    MainPage,
+    LoginPage,
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
