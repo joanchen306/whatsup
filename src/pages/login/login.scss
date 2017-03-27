@@ -1,9 +1,23 @@
 #facebookLogin {
-    height: 35px;
+    display: block;
     margin: auto;
-    align-content: center;
-    vertical-align: middle;
-    text-align: center;
-    font-size: 14px;
-    color: black;
+    width: 45;
+    padding: 8px;
+    margin-top: 80%;
+    font-size: 16px;
+    background-color: #3b5998;
+    color: #fff;
+}
+
+#facebookLogin:hover {
+    background-color: #758ab6;
+}
+
+#facebookLogin:active {
+    transform: translateY(4px);
+}
+
+#login-div { 
+    height: 100%;
+    width: 100%;
 }
