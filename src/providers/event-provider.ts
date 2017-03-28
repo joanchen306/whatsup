@@ -18,7 +18,7 @@ export class EventProvider {
   public getJsonData(){
 
 
-    return this.http.get('yourUrl')
+    return this.http.get('https://www.eventbriteapi.com/v3/events/search/?location.address=Atlanta&expand=organizer,venue&token=VMGQGYQUIO3IKNS75BD4')
          .map(res => {
                let body = res.json();
                return body.events || { };
