@@ -13,7 +13,7 @@ export class MapPage implements OnInit {
     @ViewChild('map') mapElement;
     map: any;
     userMarker: any;
-    events: any;
+    events: Array<{id: number, name: string, start: string, end: string, organizer:string, address: string, latitude: number, longitude: number}>;
     //type EventArray = Array<{id: number, name: string, start: string, end: string, organizer:string, address: string, latitude: number, longitude: number}>;
 
     constructor(public navCtrl: NavController, public platform: Platform) {
@@ -296,7 +296,7 @@ export class MapPage implements OnInit {
             scale: 10,
             fillOpacity: 1,
             strokeWeight: 2,
-            fillColor: '#00b8ff',
+            fillColor: '#ff0000',
             strokeColor: '#fff'
           },
         title: event.name,
