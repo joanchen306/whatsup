@@ -17,13 +17,12 @@ export class FriendProvider {
     this.data = null;
   }
 
-  public getAllFriends(friendsList) {
+   public getAllFriends() {
     var user = {id: "", name: "", gender: "", picture: ""};
 
     NativeStorage.getItem('user')
       .then(function (data) {
         alert("data: " + JSON.stringify(data));
-        alert("data id: " + data.id);
 
         user = {
           id: data.id,
@@ -32,25 +31,22 @@ export class FriendProvider {
           picture: data.picture
         };
 
-        alert("USER ID: " + user.id);
-
         if (user != null) {
           Facebook.api("/" + user.id + "/friends", [])
             .then(function (friends) {
               alert("Provider received: " + JSON.stringify(friends));
-              friendsList = friends;
+              return friends;
             }, function (error) {
               alert("ERROR: " + error + " USERID: " + user.id);
+              return {};
             });
         }
+        return {};
       }, function (error) {
         console.log(error);
         alert("error storage: " + error);
+        return {};
       });
-  }
-
-  getFriend(id) {
-    // TODO
   }
 
 }
