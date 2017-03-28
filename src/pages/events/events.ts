@@ -34,5 +34,12 @@ export class EventsPage {
 
 
 
+// <<<<<<< HEAD
+// =======
+//     // eventProvider.getJsonData().subscribe((res)=>{
+//     //   this.events = res.events;
+//     // });
+//   }
+// >>>>>>> aed001f581b09282ff56946cf47626317959a9ad
 
 }

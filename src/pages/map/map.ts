@@ -232,7 +232,7 @@ export class MapPage implements OnInit {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(this.centerMap.bind(this), this.showError);
       } else {
-        //browser does not support geolocation 
+        //browser does not support geolocation
         this.presentToast("Browser does not support geolocation");
       }
     }
@@ -307,7 +307,7 @@ export class MapPage implements OnInit {
       this.centerToMyLocation();
     }
 
-    presentToast(message) {
+    private presentToast(message) {
       let toast = this.toastCtrl.create({
         message: message,
         duration: 3000
