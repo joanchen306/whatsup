@@ -14,10 +14,10 @@ export class MapPage implements OnInit {
     map: any;
     userMarker: any;
     events: any;
+    //type EventArray = Array<{id: number, name: string, start: string, end: string, organizer:string, address: string, latitude: number, longitude: number}>;
 
     constructor(public navCtrl: NavController, public platform: Platform) {
-        type EventArray = Array<{id: number, name: string, start: string, end: string, organizer:string, address: string, latitude: number, longitude: number}>;
-        var events: EventArray = [
+        this.events = [
         {id: 22601901897, name:"Big Tigger Hosts Suite Life Fridays At Suite Lounge - RSVP HERE", start:"2017-04-01T02:00:00Z", end:"2017-04-01T07:00:00Z", organizer:"FURIOUS ENTERTAINMENT, ATLANTA, GA", address:"375 Luckie Street, Atlanta, GA 30313", latitude:33.764985, longitude:-84.39578920000002},
         {id: 16926238836, name:"Suite Life Dinner Party Every Friday At Suite Lounge - Reserve Your Table Now", start:"2017-04-01T02:00:00Z", end:"2017-04-01T07:00:00Z", organizer:"FURIOUS ENTERTAINMENT, ATLANTA, GA", address:"375 Luckie Street, Atlanta, GA 30313", latitude:33.764985, longitude:-84.39578920000002},
         {id: 11121351261, name:"FREE BIRTHDAY SECTIONS AT ATLANTIS", start:"2017-04-02T02:00:00Z", end:"2017-04-02T07:00:00Z", organizer:"THURSDAY: Glamour Thursdays", address: "1937 PIEDMONT CIRCLE NW., ATLANTA, GA", latitude:33.8103915, longitude:-84.36746599999998},
@@ -240,6 +240,7 @@ export class MapPage implements OnInit {
 
       this.map.controls[google.maps.ControlPosition.BOTTOM_RIGHT].push(centerControlDiv);
 
+      console.log(this.events);
       for (let event of this.events) {
         this.createEventMarker(event);
       }
