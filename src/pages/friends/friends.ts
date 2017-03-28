@@ -20,21 +20,21 @@ export class FriendsPage {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
 
-    friendProvider.getAllFriends()
-      .then(function (friends) {
-          // TODO: Display data
-          for (let i = 1; i < 5; i++) {
-            this.friends.push({
-              name: friends.data[i].name,
-              active: this.tf[Math.floor(Math.random() * this.tf.length)],
-              distance: 0,
-              icon: ''
-            });
-          }
-        }, function (error) {
-          // TODO:
-        }
-      );
+    // friendProvider.getAllFriends()
+    //   .then(function (friends) {
+    //       // TODO: Display data
+    //       for (let i = 1; i < 5; i++) {
+    //         this.friends.push({
+    //           name: friends.data[i].name,
+    //           active: this.tf[Math.floor(Math.random() * this.tf.length)],
+    //           distance: 0,
+    //           icon: ''
+    //         });
+    //       }
+    //     }, function (error) {
+    //       // TODO:
+    //     }
+    //   );
     alert("IDS: " + this.friendsIds);
 
     // // Let's populate this page with some filler content for funzies
