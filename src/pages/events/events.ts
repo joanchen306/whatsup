@@ -13,9 +13,9 @@ export class EventsPage {
 
   constructor(public navCtrl: NavController, private eventProvider: EventProvider) {
 
-    eventProvider.getJsonData().subscribe((res)=>{
-      this.events = res.events;
-    });
+    // eventProvider.getJsonData().subscribe((res)=>{
+    //   this.events = res.events;
+    // });
   }
 
 }
