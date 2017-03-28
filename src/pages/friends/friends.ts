@@ -41,6 +41,7 @@ export class FriendsPage {
           total_count:744
         }
       };
+    //alert("Provider received: " + JSON.stringify(friendsData));
 
     // NativeStorage.getItem('user')
     //   .then(function (data) {
@@ -58,14 +59,14 @@ export class FriendsPage {
     //         .then(function (friends) {
     //           alert("Provider received: " + JSON.stringify(friends));
     //           console.log(JSON.stringify(friends));
-    //           // for (let i = 0; i < friends.data.length; i++) {
-    //           //   this.friends.push({
-    //           //     name: friends.data[i].name,
-    //           //     active: this.tf[Math.floor(Math.random() * this.tf.length)],
-    //           //     distance: 0,
-    //           //     icon: ''
-    //           //   });
-    //           // }
+    //           for (let i = 0; i < 4; i++) {
+    //             this.friends.push({
+    //               name: friends.data[i].name,
+    //               active: this.tf[Math.floor(Math.random() * this.tf.length)],
+    //               distance: 0,
+    //               icon: ''
+    //             });
+    //           }
     //         }, function (error) {
     //           alert("ERROR: " + error + " USERID: " + user.id);
     //         });
