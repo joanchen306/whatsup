@@ -1,6 +1,7 @@
 import {Component} from "@angular/core";
 import {FriendProvider} from "../../providers/friend-provider";
 import {NavController, NavParams} from "ionic-angular";
+import {Facebook, NativeStorage} from "ionic-native";
 
 @Component({
   selector: 'friends-list',
@@ -20,46 +21,74 @@ export class FriendsPage {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
 
-    // friendProvider.getAllFriends()
-    //   .then(function (friends) {
-    //       // TODO: Display data
-    //       for (let i = 1; i < 5; i++) {
-    //         this.friends.push({
-    //           name: friends.data[i].name,
-    //           active: this.tf[Math.floor(Math.random() * this.tf.length)],
-    //           distance: 0,
-    //           icon: ''
-    //         });
-    //       }
-    //     }, function (error) {
-    //       // TODO:
-    //     }
-    //   );
-    alert("IDS: " + this.friendsIds);
+    var user = {id: "", name: "", gender: "", picture: ""};
+    this.friends = [];
+    this.tf = [true, false];
+    let friendsData = {
+      data: [
+          {name: "Will Christian", id: "10155132584509579"},
+          {name: "Brandi Van de Houten",id:"10211792738116830"},
+          {name:"Joan Chen",id:"1490713480948336"},
+          {name:"Aaron Parry", id:"1643380619020632"}
+        ],
+        paging:{
+          cursors:{
+            before:"QVFIUkc2N1VWZAXlmbzhrS3haMDBhUFEzcFpHSEQxSlc4cklNVENzelZAMMVhENjYwbjk3Qk1qZAGtRZAmdISE5YdllqVEEZD",
+            after:"QVFIUnJRTEd3NnNhcUg3WTVoY2hUNkhjbHl2MEFMMzNKVkt5RmRUbmhabDhDU3c4ekZAXOEhRWG82ZAnpncnAtQlZAnZAEhqYV9udWRmX3llcnFtYl9DVFV6SXFB"
+          }
+        },
+        summary:{
+          total_count:744
+        }
+      };
 
-    // // Let's populate this page with some filler content for funzies
-    // this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-    // 'american-football', 'boat', 'bluetooth', 'build'];
+    // NativeStorage.getItem('user')
+    //   .then(function (data) {
+    //     alert("data: " + JSON.stringify(data));
     //
-    // this.fnames = ['Aaron','Ryan','John','Will','Alice','Brandi','Joan','Mark',
-    // 'Andrew','Austin','Luke','Matt','Lauren','Bianca'];
-    // this.lnames = ['Parry','James','Goldstein','Brooks','Chen','Christian','Lee','Smith'];
-    // this.tf = [true,false]
-    // this.friends = [];
-    // for (let i = 1; i < 35; i++) {
-    //   this.friends.push({
-    //     name: this.fnames[Math.floor(Math.random() * this.fnames.length)] + " " + this.lnames[Math.floor(Math.random() * this.lnames.length)],
-    //     active: this.tf[Math.floor(Math.random() * this.tf.length)],
-    //     distance:Math.random()*10,
-    //     icon: this.icons[Math.floor(Math.random() * this.icons.length)]
+    //     user = {
+    //       id: data.id,
+    //       name: data.name,
+    //       gender: data.gender,
+    //       picture: data.picture
+    //     };
+    //
+    //     if (user != null) {
+    //       Facebook.api("/" + user.id + "/friends", [])
+    //         .then(function (friends) {
+    //           alert("Provider received: " + JSON.stringify(friends));
+    //           console.log(JSON.stringify(friends));
+    //           // for (let i = 0; i < friends.data.length; i++) {
+    //           //   this.friends.push({
+    //           //     name: friends.data[i].name,
+    //           //     active: this.tf[Math.floor(Math.random() * this.tf.length)],
+    //           //     distance: 0,
+    //           //     icon: ''
+    //           //   });
+    //           // }
+    //         }, function (error) {
+    //           alert("ERROR: " + error + " USERID: " + user.id);
+    //         });
+    //     }
+    //   }, function (error) {
+    //     console.log(error);
+    //     alert("error storage: " + error);
+    //   });
+
+    for (let i = 0; i < 4; i++) {
+      this.friends.push({
+        name: friendsData.data[i].name,
+        active: this.tf[Math.floor(Math.random() * this.tf.length)],
+        distance: 0,
+        icon: ''
+      });
+    }
+  }
+
+    // itemTapped(event, item) {
+    //   // That's right, we're pushing to ourselves!
+    //   this.navCtrl.push(Page2, {
+    //     item: item
     //   });
     // }
   }
-
-  // itemTapped(event, item) {
-  //   // That's right, we're pushing to ourselves!
-  //   this.navCtrl.push(Page2, {
-  //     item: item
-  //   });
-  // }
-}
