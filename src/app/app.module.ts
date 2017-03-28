@@ -7,6 +7,7 @@ import { FriendsPage } from '../pages/friends/friends';
 import { MapPage } from '../pages/map/map';
 import { MainPage } from '../pages/mainpage/mainpage';
 import { LoginPage } from '../pages/login/login';
+import {FriendProvider} from "../providers/friend-provider";
 
 const cloudSettings: CloudSettings = {
   'core': {
@@ -17,7 +18,7 @@ const cloudSettings: CloudSettings = {
       'scope': ['public_profile']
     }
   }
-}
+};
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ const cloudSettings: CloudSettings = {
     MainPage,
     LoginPage,
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},
+  FriendProvider]
 })
 export class AppModule {}
