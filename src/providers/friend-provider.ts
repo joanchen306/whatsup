@@ -12,13 +12,15 @@ import "rxjs/add/operator/map";
 @Injectable()
 export class FriendProvider {
   data:any;
+  friends:any;
 
   constructor(public http:Http) {
     this.data = null;
   }
 
-   public getAllFriends() {
+  public getAllFriends() {
     var user = {id: "", name: "", gender: "", picture: ""};
+    this.friends = [];
 
     NativeStorage.getItem('user')
       .then(function (data) {
@@ -32,21 +34,13 @@ export class FriendProvider {
         };
 
         if (user != null) {
-          Facebook.api("/" + user.id + "/friends", [])
-            .then(function (friends) {
-              alert("Provider received: " + JSON.stringify(friends));
-              return friends;
-            }, function (error) {
-              alert("ERROR: " + error + " USERID: " + user.id);
-              return {};
-            });
-        }
-        return {};
-      }, function (error) {
-        console.log(error);
-        alert("error storage: " + error);
-        return {};
-      });
-  }
+          Facebook.api("/" + user.id + "/friends", function(response) {
+            console.log(response);
 
+          });
+        }
+
+      });
+    return [];
+  }
 }
