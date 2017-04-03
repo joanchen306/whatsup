@@ -1,6 +1,10 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 
-import { NavController, Platform, ToastController } from 'ionic-angular';
+import { NavController, Platform, ModalController } from 'ionic-angular';
+
+import { NativeStorage } from "ionic-native";
+
+import { EventDetails } from "../eventdetails/eventdetails";
 
 declare var google;
 
@@ -13,9 +17,18 @@ export class MapPage implements OnInit {
     @ViewChild('map') mapElement;
     map: any;
     userMarker: any;
+    user: any;
 
-    constructor(public navCtrl: NavController, public platform: Platform, public toastCtrl: ToastController) {
-
+    constructor(public navCtrl: NavController, public platform: Platform, public modalCtrl: ModalController) {
+        NativeStorage.getItem('user')
+        .then(function (data) {
+            this.user = {
+                id: data.id,
+                name: data.name,
+                gender: data.gender,
+                picture: data.picture
+            };
+        }.bind(this));
     }
 
     ngOnInit() {}
@@ -233,7 +246,7 @@ export class MapPage implements OnInit {
         navigator.geolocation.getCurrentPosition(this.centerMap.bind(this), this.showError);
       } else {
         //browser does not support geolocation 
-        this.presentToast("Browser does not support geolocation");
+        alert("Browser does not support geolocation");
       }
     }
 
@@ -270,16 +283,16 @@ export class MapPage implements OnInit {
     showError(error) {
       switch(error.code) {
         case error.PERMISSION_DENIED:
-          this.presentToast("User denied the request for Geolocation.");
+          alert("User denied the request for Geolocation.");
           break;
         case error.POSITION_UNAVAILABLE:
-          this.presentToast( "Location information is unavailable.");
+          alert( "Location information is unavailable.");
           break;
         case error.TIMEOUT:
-          this.presentToast("The request to get user location timed out.");
+          alert("The request to get user location timed out.");
           break;
         case error.UNKNOWN_ERROR:
-          this.presentToast("An unknown error occurred.");
+          alert("An unknown error occurred.");
           break;
       }
     }
@@ -310,12 +323,8 @@ export class MapPage implements OnInit {
       this.centerToMyLocation();
     }
 
-    presentToast(message) {
-      let toast = this.toastCtrl.create({
-        message: message,
-        duration: 3000
-      });
-
-      toast.present();
+    presentEventDetailsModal() {
+      let eventDetailsModal = this.modalCtrl.create(EventDetails, { userId: this.user.id });
+      eventDetailsModal.present();
     }
 }
