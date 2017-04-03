@@ -241,6 +241,9 @@ export class MapPage implements OnInit {
       let lat = position.coords.latitude;
       let long = position.coords.longitude;
 
+      console.log('user lat : ' + lat);
+      console.log('user long: ' + long);
+
       if (this.userMarker != null) {
         this.userMarker.setMap(null);
       }
