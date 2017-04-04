@@ -32,13 +32,13 @@ export class FriendProvider {
           gender: data.gender,
           picture: data.picture
         };
-
-        if (user != null) {
-          Facebook.api("/" + user.id + "/friends", function(response) {
-            console.log(response);
-
-          });
-        }
+          //
+          // if (user != null) {
+          //   Facebook.api("/" + user.id + "/friends", function(response) {
+          //     console.log(response);
+          //
+          //   });
+          // }
 
       });
     return [];

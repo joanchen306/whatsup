@@ -1,15 +1,15 @@
-import { NgModule, ErrorHandler } from '@angular/core';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
-import { MyApp } from './app.component';
-import { EventsPage } from '../pages/events/events';
-import { FriendsPage } from '../pages/friends/friends';
-import { MapPage } from '../pages/map/map';
-import { MainPage } from '../pages/mainpage/mainpage';
-import { LoginPage } from '../pages/login/login';
-import {FriendProvider} from "../providers/friend-provider";
+import {NgModule, ErrorHandler} from "@angular/core";
+import {IonicApp, IonicModule, IonicErrorHandler} from "ionic-angular";
+import {CloudSettings, CloudModule} from "@ionic/cloud-angular";
+import {MyApp} from "./app.component";
+import {EventsPage} from "../pages/events/events";
+import {FriendsPage} from "../pages/friends/friends";
+import {MapPage} from "../pages/map/map";
+import {MainPage} from "../pages/mainpage/mainpage";
+import {LoginPage} from "../pages/login/login";
+import {FacebookService} from "../services/facebook.service";
 
-const cloudSettings: CloudSettings = {
+const cloudSettings:CloudSettings = {
   'core': {
     'app_id': '90d65db5'
   },
@@ -43,6 +43,7 @@ const cloudSettings: CloudSettings = {
     LoginPage,
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},
-  FriendProvider]
+    FacebookService],
 })
-export class AppModule {}
+export class AppModule {
+}
