@@ -7,7 +7,7 @@
 <ion-content padding>
   <ion-slides initialSlide="1" (ionSlideDidChange)="onSlideDidChange()">
     <ion-slide>
-      <friends-list></friends-list>
+      <friends-list [userId]="userId"></friends-list>
     </ion-slide>
     <ion-slide>
       <div>

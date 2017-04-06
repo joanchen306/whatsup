@@ -12,6 +12,7 @@ import {LoginPage} from "../pages/login/login";
 })
 export class MyApp {
   @ViewChild(Nav) nav:Nav;
+  userId:string;
 
   rootPage:any = LoginPage;
 
@@ -40,11 +41,10 @@ export class MyApp {
         .then(function (data) {
           //User was previously logged in
           // TODO: Trigger Facebook login refresh
-          env.nav.push(MainPage);
+          env.nav.push(MainPage, data.id);
           Splashscreen.hide();
         }, function (error) {
           //User data not found locally
-          env.nav.push(LoginPage);
           Splashscreen.hide();
         });
 

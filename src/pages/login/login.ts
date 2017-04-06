@@ -2,6 +2,7 @@ import {Component} from "@angular/core";
 import {NavController} from "ionic-angular";
 import {Facebook, NativeStorage} from "ionic-native";
 import {MainPage} from "../mainpage/mainpage";
+import {EnvironmentVariable} from "../../environment/environment_variables";
 ``
 
 @Component({
@@ -41,6 +42,7 @@ export class LoginPage {
                 picture: user.picture,
               })
               .then(function () {
+                // TODO: Env variable for userid
                 nav.push(MainPage);
               }, function (error) {
                 console.log(error);

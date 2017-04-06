@@ -1,7 +1,8 @@
-import {Component, ViewChild} from "@angular/core";
-import {NavController, Slides} from "ionic-angular";
+import {Component, ViewChild, Input} from "@angular/core";
+import {NavController, Slides, NavParams} from "ionic-angular";
 import {FacebookService} from "../../services/facebook.service";
 import {NativeStorage} from "ionic-native/dist/es5/index";
+import {EnvironmentVariable} from "../../environment/environment_variables";
 
 @Component({
   selector: 'main-page',
@@ -10,6 +11,7 @@ import {NativeStorage} from "ionic-native/dist/es5/index";
 })
 export class MainPage {
   data:any;
+  userId:string;
 
   @ViewChild(Slides) slides:Slides;
 
@@ -17,12 +19,9 @@ export class MainPage {
   MAP_SLIDE_INDEX:number = 1;
   EVENTS_LIST_SLIDE_INDEX:number = 2;
 
-  constructor(public navCtrl:NavController, private facebookService:FacebookService) {
-  }
-
-  ngOnInit() {
-    this.data = this.facebookService.getFriends("TEST");
-    alert(this.data);
+  constructor(public navParams:NavParams, public navCtrl:NavController, public facebookService:FacebookService) {
+    alert("NavParams: " + JSON.stringify(navParams));
+    this.userId = navParams.data;
   }
 
   goToSlide(slideIndex) {
@@ -31,22 +30,9 @@ export class MainPage {
   }
 
   onSlideDidChange() {
-    NativeStorage.getItem('user')
-      .then(function (data) {
-
-        let user = {
-          id: data.id,
-          name: data.name,
-          gender: data.gender,
-          picture: data.picture
-        };
-
-        if (user != null) {
-          alert("In if statement");
-          alert(this);
-          this.facebookService.getFriends(user.id);
-        }
-      });
+    alert("In if statement");
+    alert("UserId: " + this.userId);
+    this.facebookService.getFriends(this.userId);
 
     if (this.slides.getActiveIndex() == this.MAP_SLIDE_INDEX) {
       this.slides.lockSwipes(true);

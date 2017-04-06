@@ -1,8 +1,8 @@
-import {Component} from "@angular/core";
+import {Component, Input} from "@angular/core";
 import {NavController, NavParams} from "ionic-angular";
-import {NativeStorage} from "ionic-native/dist/es5/index";
 import {Observable} from "rxjs/Rx";
 import {FacebookService} from "../../services/facebook.service";
+import {Http} from "@angular/http";
 
 @Component({
   selector: 'friends-list',
@@ -18,34 +18,34 @@ export class FriendsPage {
   tf:boolean[];
   friends:any[];
   public friendsObservable:Observable<any[]>;
+  @Input() userId:string;
 
-  constructor(public navCtrl:NavController, public navParams:NavParams, public facebookService:FacebookService) {
+  private accessToken = 'EAACEdEose0cBAMR4BmdM3kh6uYPFAYVOPZAjHZCrBB19Yaee2B9ZAialtVIfUTXaZBMpdV18W3IbLCXKXnShPmvYYWYZB4aus0vFlZCMIiFtHErsfkMAjgNQaRKf5BZCP5U5AZCnZBlozb14ObFJkoaEt2NjlUR5nuwza4eK6J6MAyKQb5xRSuAoC';
+
+  private graphUrl = `https://graph.facebook.com/v2.8/?access_token=${this.accessToken}/`;
+  private friendsQuery = '/friends';
+
+  constructor(public navCtrl:NavController, public navParams:NavParams, private http:Http) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
+    alert("friends userId:" + this.userId);
 
-    //this.friends = this.friends.getAllFriends();
 
-    NativeStorage.getItem('user')
-      .then(function (data) {
+    let url = this.graphUrl + "10211612897815532" + this.friendsQuery;
 
-        let user = {
-          id: data.id,
-          name: data.name,
-          gender: data.gender,
-          picture: data.picture
-        };
-
-        if (user != null) {
-          alert(this)
-          facebookService.getFriends(user.id)
-            .map(data => {
-              alert("I'm here");
-              //data.map(this.mapFriends);
-            });
-          //alert(this.friendsObservable);
-        }
-
+    this.http
+      .get(url)
+      .map(response => response.json())
+      .subscribe(data => {
+        alert("Data: " + data);
       });
+
+        //return response.json().data;
+      //});
+
+    alert("Passed the code");
+    //alert(this.friendsObservable);
+
     // // Let's populate this page with some filler content for funzies
     // this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
     // 'american-football', 'boat', 'bluetooth', 'build'];
