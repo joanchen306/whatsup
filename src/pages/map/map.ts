@@ -323,6 +323,30 @@ export class MapPage implements OnInit {
       this.centerToMyLocation();
     }
 
+    createEventMarker(event) {
+      let lat = event.latitude;
+      let long = event.longitude;
+
+      let latLng = new google.maps.LatLng(lat, long);
+    
+      let eventMarker = new google.maps.Marker({
+        position: latLng,
+        map: this.map,
+        icon: {
+            path: google.maps.SymbolPath.CIRCLE,
+            scale: 10,
+            fillOpacity: 1,
+            strokeWeight: 2,
+            fillColor: '#ff0000',
+            strokeColor: '#fff'
+          },
+        title: event.name,
+      });
+
+      //eventMarker.addListener('click', this.presentEventDetailsModal);
+      eventMarker.setMap(this.map);
+    }
+
     presentEventDetailsModal() {
       let eventDetailsModal = this.modalCtrl.create(EventDetails, { userId: this.user.id });
       eventDetailsModal.present();

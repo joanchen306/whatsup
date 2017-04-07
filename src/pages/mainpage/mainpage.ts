@@ -40,4 +40,8 @@ export class MainPage {
       this.slides.lockSwipes(false);
     }
   }
+
+  launchEventFilterModal() {
+    alert('open filter page');
+  }
 }
