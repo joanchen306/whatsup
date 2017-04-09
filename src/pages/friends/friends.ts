@@ -22,6 +22,7 @@ export class FriendsPage {
   }
 
   itemTapped(item) {
+    alert("ITEM TAPPED");
     let friendDetailsModal = this.modalCtrl.create(FriendDetails,
       item.name);
     friendDetailsModal.present();
