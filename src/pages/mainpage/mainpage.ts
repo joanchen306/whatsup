@@ -13,6 +13,7 @@ import {FilterPage} from "../filter/filter";
 export class MainPage {
   data:any;
   userId:string;
+  filters: [''];
   @ViewChild(Slides) slides:Slides;
 
   FRIENDS_SLIDE_INDEX:number = 0;
@@ -44,6 +45,10 @@ export class MainPage {
   // }
   launchEventFilterModal() {
     let eventFilterModal = this.modalCtrl.create(FilterPage);
+    eventFilterModal.onDidDismiss(data => {
+      this.filters = data.filters;
+      console.log(data.filters);
+    })
     eventFilterModal.present();
   }
 }

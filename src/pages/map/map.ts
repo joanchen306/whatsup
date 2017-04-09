@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit, Input } from '@angular/core';
 
 import { NavController, Platform, ModalController } from 'ionic-angular';
 
@@ -16,7 +16,7 @@ declare var google;
   providers: [EventData]
 })
 export class MapPage implements OnInit {
-
+    @Input() filters: [''];
     @ViewChild('map') mapElement;
     map: any;
     userMarker: any;
