@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 import { Component, ViewChild, OnInit, Input, SimpleChange } from '@angular/core';
-=======
-import {Component, ViewChild, OnInit, Input} from '@angular/core';
->>>>>>> 065adfb75b1de70465a8f4f44da932320bf489bb
+
 
 import {NavController, Platform, ModalController} from 'ionic-angular';
 
