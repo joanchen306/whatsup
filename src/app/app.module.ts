@@ -9,6 +9,7 @@ import {MainPage} from "../pages/mainpage/mainpage";
 import {LoginPage} from "../pages/login/login";
 import {FacebookService} from "../services/facebook.service";
 import {FilterPage} from "../pages/filter/filter";
+import {FriendDetails} from "../pages/friendDetails/friendDetails";
 
 const cloudSettings:CloudSettings = {
   'core': {
@@ -30,6 +31,7 @@ const cloudSettings:CloudSettings = {
     MainPage,
     LoginPage,
     FilterPage,
+    FriendDetails
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -43,7 +45,8 @@ const cloudSettings:CloudSettings = {
     MapPage,
     MainPage,
     LoginPage,
-    FilterPage
+    FilterPage,
+    FriendDetails
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},
     FacebookService],

@@ -1,4 +1,5 @@
 import {Component, Input} from "@angular/core";
+
 import {NavController, NavParams, ModalController} from "ionic-angular";
 import {Observable} from "rxjs/Rx";
 import {FacebookService} from "../../services/facebook.service";
@@ -21,10 +22,9 @@ export class FriendsPage {
     this.friends = friendData.friends;
   }
 
+
   itemTapped(item) {
-    alert("ITEM TAPPED");
-    let friendDetailsModal = this.modalCtrl.create(FriendDetails,
-      item.name);
+    let friendDetailsModal = this.modalCtrl.create(FriendDetails);
     friendDetailsModal.present();
   }
 }

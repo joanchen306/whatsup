@@ -1,4 +1,4 @@
-import {NavParams} from "ionic-angular";
+import {NavParams, ViewController} from "ionic-angular";
 import {Component} from "@angular/core";
 
 @Component({
@@ -7,8 +7,11 @@ import {Component} from "@angular/core";
 })
 export class FriendDetails {
 
-  constructor(navParams:NavParams) {
-
+  constructor(navParams:NavParams, public viewCtrl:ViewController) {
     // alert("GOT: " + navParams.get('name'));
+  }
+
+  dismiss() {
+    this.viewCtrl.dismiss();
   }
 }

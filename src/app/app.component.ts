@@ -7,6 +7,7 @@ import {MapPage} from "../pages/map/map";
 import {MainPage} from "../pages/mainpage/mainpage";
 import {LoginPage} from "../pages/login/login";
 import {FilterPage} from "../pages/filter/filter";
+import {FriendDetails} from "../pages/friendDetails/friendDetail";
 
 @Component({
   templateUrl: 'app.html'
