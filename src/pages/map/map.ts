@@ -6,20 +6,27 @@ import { NativeStorage } from "ionic-native";
 
 import { EventDetails } from "../eventdetails/eventdetails";
 
+import { EventData } from "../../data/eventData";
+
 declare var google;
 
 @Component({
   selector: 'map-page',
-  templateUrl: 'map.html'
+  templateUrl: 'map.html',
+  providers: [EventData]
 })
 export class MapPage implements OnInit {
     @Input() filters: [''];
     @ViewChild('map') mapElement;
     map: any;
     userMarker: any;
+    events: any[];
+    eventMarkers: any[];
     // user: any;
 
-    constructor(public navCtrl: NavController, public platform: Platform, public modalCtrl: ModalController) {
+    constructor(public navCtrl: NavController, public platform: Platform, public modalCtrl: ModalController, private eventData: EventData) {
+        this.events = eventData.events;
+        this.eventMarkers = [];
         // NativeStorage.getItem('user')
         // .then(function (data) {
         //     this.user = {
@@ -239,6 +246,11 @@ export class MapPage implements OnInit {
       this.findMeControl(centerControlDiv, this.map);
 
       this.map.controls[google.maps.ControlPosition.BOTTOM_RIGHT].push(centerControlDiv);
+      
+      for (let event of this.events) {
+        alert(event);
+        this.createEventMarker(event);
+      }
     }
 
     centerToMyLocation() {
@@ -343,12 +355,14 @@ export class MapPage implements OnInit {
         title: event.name,
       });
 
-      //eventMarker.addListener('click', this.presentEventDetailsModal);
+      this.eventMarkers.push(eventMarker);
       eventMarker.setMap(this.map);
+      //google.maps.event.addListener(eventMarker, 'click', this.presentEventDetailsModal(event));
+      //eventMarker.addListener('click', this.presentEventDetailsModal(event));
     }
 
-    presentEventDetailsModal() {
-      // let eventDetailsModal = this.modalCtrl.create(EventDetails, { userId: this.user.id });
-      // eventDetailsModal.present();
+    presentEventDetailsModal(event) {
+      let eventDetailsModal = this.modalCtrl.create(EventDetails, { event: event});
+      eventDetailsModal.present();
     }
 }
