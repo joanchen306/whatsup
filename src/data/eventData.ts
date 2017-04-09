@@ -15,10 +15,30 @@ export class EventData {
         category: 'Music',
         start: "8:00pm",
         end: "10:00pm",
-        promoter: "Decatur Glassblowing",
+        promoter: "The Loft",
         address: "1374 West Peachtree Street, Atlanta, Georgia 30309",
         latitude: 33.792034,
         longitude: -84.387980,
+      },
+      {
+        name:'The Decemberists',
+        category: 'Music',
+        start: "8:00pm",
+        end: "10:00pm",
+        promoter: "Fabulous Fox Theatre",
+        address: "660 Peachtree Street NE, Atlanta, Georgia 30308",
+        latitude: 33.772620,
+        longitude: -84.385561,
+      },
+      {
+        name:'Catch the Wave with Our Ocean Creatures Series! in Atlanta',
+        category: 'Games',
+        start: "4:30pm",
+        end: "5:30pm",
+        promoter: "Atlanta Fulton Public Library System",
+        address: "395 Mount Vernon Highway, Atlanta Georgia, 30328",
+        latitude: 33.924097,
+        longitude: -84.374329,
       }
     ]
 }
