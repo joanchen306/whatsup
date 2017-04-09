@@ -1,5 +1,5 @@
 import {Component, Input} from "@angular/core";
-import {NavController, NavParams} from "ionic-angular";
+import {NavController, NavParams, ViewController} from "ionic-angular";
 import {Observable} from "rxjs/Rx";
 import {FacebookService} from "../../services/facebook.service";
 import {Http} from "@angular/http";
@@ -42,4 +42,5 @@ export class FriendsPage {
   //     item: item
   //   });
   // }
+
 }

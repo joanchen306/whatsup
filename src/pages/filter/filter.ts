@@ -1,5 +1,5 @@
 import {Component, ViewChild, Input} from "@angular/core";
-import {Nav, NavController, Slides, NavParams} from "ionic-angular";
+import {Nav, NavController, Slides, NavParams, ViewController} from "ionic-angular";
 import {FacebookService} from "../../services/facebook.service";
 import {NativeStorage} from "ionic-native/dist/es5/index";
 import {EnvironmentVariable} from "../../environment/environment_variables";
@@ -18,8 +18,9 @@ export class FilterPage {
   MAP_SLIDE_INDEX:number = 1;
   EVENTS_LIST_SLIDE_INDEX:number = 2;
 
-  constructor(public navParams:NavParams, public navCtrl:NavController, public facebookService:FacebookService) {
+  constructor(public navParams:NavParams, public navCtrl:NavController, public viewCtrl: ViewController) {
     this.userId = navParams.data;
+    this.viewCtrl = viewCtrl;
   }
 
   goToSlide(slideIndex) {
@@ -36,7 +37,7 @@ export class FilterPage {
     }
   }
 
-  launchEventFilterModal() {
-    this.navCtrl.push(FilterPage)
+  dismiss() {
+    this.viewCtrl.dismiss();
   }
 }
