@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import {EventProvider} from '../../providers/event-provider';
 import { NavController } from 'ionic-angular';
+import {EventData} from "../../data/eventData";
 
 @Component({
   selector: 'event-list',
   templateUrl: 'events.html',
-  providers: [EventProvider]
+  providers: [EventData]
 })
 export class EventsPage {
   events = []

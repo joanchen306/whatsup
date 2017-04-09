@@ -1,13 +1,13 @@
 <ion-content>
   <ion-list>
-    <button ion-item *ngFor="let friend of friends" >
+    <button ion-item *ngFor="let friend of friends" (click)="itemTapped(friend)">
       <ion-icon [name]="friend.icon" item-left></ion-icon>
-      <h5 [ngClass]="{'active': friend.active, 'inactive':!friend.active }" >
+      <h5 [ngClass]="{'active': friend.available, 'inactive':!friend.available }" >
         {{friend.name}}
       </h5>
-      <p *ngIf="friend.active">Active</p>
-      <p *ngIf="!friend.active">Inactive</p>
-      <div *ngIf="friend.active" class="friend-dist" item-right>
+      <p *ngIf="friend.available">Active</p>
+      <p *ngIf="!friend.available">Inactive</p>
+      <div *ngIf="friend.available" class="friend-dist" item-right>
         {{friend.distance | number : '1.2-2'}} mi
       </div>
     </button>
