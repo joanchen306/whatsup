@@ -20,7 +20,6 @@ export class MainPage {
   EVENTS_LIST_SLIDE_INDEX:number = 2;
 
   constructor(public navParams:NavParams, public navCtrl:NavController, public facebookService:FacebookService) {
-    alert("NavParams: " + JSON.stringify(navParams));
     this.userId = navParams.data;
   }
 
@@ -30,9 +29,6 @@ export class MainPage {
   }
 
   onSlideDidChange() {
-    alert("In if statement");
-    alert("UserId: " + this.userId);
-    this.facebookService.getFriends(this.userId);
 
     if (this.slides.getActiveIndex() == this.MAP_SLIDE_INDEX) {
       this.slides.lockSwipes(true);

@@ -28,8 +28,6 @@ export class FriendsPage {
   constructor(public navCtrl:NavController, public navParams:NavParams, private http:Http) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
-    alert("friends userId:" + this.userId);
-
 
     let url = this.graphUrl + "10211612897815532" + this.friendsQuery;
 
@@ -39,12 +37,6 @@ export class FriendsPage {
       .subscribe(data => {
         alert("Data: " + data);
       });
-
-        //return response.json().data;
-      //});
-
-    alert("Passed the code");
-    //alert(this.friendsObservable);
 
     // // Let's populate this page with some filler content for funzies
     // this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
@@ -66,7 +58,6 @@ export class FriendsPage {
   }
 
   mapFriends = (friend) => {
-    alert("Friend: " + friend);
     this.friends.push({
       name: friend.name,
       active: this.tf[Math.floor(Math.random() * this.tf.length)],

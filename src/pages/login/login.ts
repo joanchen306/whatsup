@@ -3,7 +3,7 @@ import {NavController} from "ionic-angular";
 import {Facebook, NativeStorage} from "ionic-native";
 import {MainPage} from "../mainpage/mainpage";
 import {EnvironmentVariable} from "../../environment/environment_variables";
-``
+
 
 @Component({
   selector: 'login',
@@ -26,7 +26,6 @@ export class LoginPage {
         console.log(response);
 
         let userId = response.authResponse.userID;
-        alert("Faceook response id: " + userId)
         let params = new Array();
 
         //Getting name and gender properties
