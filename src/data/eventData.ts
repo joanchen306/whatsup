@@ -99,6 +99,26 @@ export class EventData {
         address: "553-1 Amsterdam Avenue, Atlanta, GA, 30306",
         latitude: 33.788153,
         longitude: -84.368868,
+      },
+      {
+        name:'Chipper Jones Book Signing',
+        category: 'Sports/Recreation',
+        start: "11:00am",
+        end: "1:30pm",
+        promoter: "Hartsfield-Jackson Atlanta ",
+        address: "6000 N Terminal Pkwy, Atlanta, GA 30320",
+        latitude: 33.640776,
+        longitude: -84.444326,
+      },
+      {
+        name:'Art in the Park',
+        category: 'Art/Film',
+        start: "12:00pm",
+        end: "10:00pm",
+        promoter: "Atlantic Station",
+        address: "231 18th Street NW, Atlanta, GA, 30363",
+        latitude: 33.792606,
+        longitude: -84.395530,
       }
     ]
 }
