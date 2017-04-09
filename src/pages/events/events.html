@@ -1,6 +1,6 @@
 <ion-content>
   <ion-list>
-    <button ion-item *ngFor="let event of events" >
+    <button ion-item *ngFor="let event of events" (click)="eventTapped(event)">
       <h5>
         {{event.name}}
       </h5>

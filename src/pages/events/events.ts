@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-//import {EventProvider} from '../../providers/event-provider';
-import { NavController } from 'ionic-angular';
+import {Component} from "@angular/core";
+import {NavController} from "ionic-angular";
 import {EventData} from "../../data/eventData";
+//import {EventProvider} from '../../providers/event-provider';
 
 @Component({
   selector: 'event-list',
@@ -9,14 +9,15 @@ import {EventData} from "../../data/eventData";
   providers: [EventData]
 })
 export class EventsPage {
-  events = []
+  events:any[];
 
 
-  constructor(public navCtrl: NavController, /*private eventProvider: EventProvide*/) {
-    //
-    // eventProvider.getJsonData().subscribe((res)=>{
-    //   this.events = res.events;
-    // });
+  constructor(public navCtrl:NavController, private eventData:EventData) {
+    this.events = eventData.events;
+  }
+
+  eventTapped(event) {
+    // TODO: Launch event modal
   }
 
 }

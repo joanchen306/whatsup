@@ -23,8 +23,9 @@ export class FriendsPage {
   }
 
 
-  itemTapped(item) {
+  friendTapped(friend) {
     let friendDetailsModal = this.modalCtrl.create(FriendDetails);
+    // TODO: Pass in friend details
     friendDetailsModal.present();
   }
 }
