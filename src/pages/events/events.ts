@@ -6,7 +6,7 @@ import {EventData} from "../../data/eventData";
 @Component({
   selector: 'event-list',
   templateUrl: 'events.html',
-  providers: [EventProvider]
+  providers: [EventData]
 })
 export class EventsPage {
   events = []
