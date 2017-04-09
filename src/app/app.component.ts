@@ -8,6 +8,7 @@ import {MainPage} from "../pages/mainpage/mainpage";
 import {LoginPage} from "../pages/login/login";
 import {FilterPage} from "../pages/filter/filter";
 import {FriendDetails} from "../pages/friendDetails/friendDetail";
+import {EventDetails} from "../pages/eventdetails/eventdetails";
 
 @Component({
   templateUrl: 'app.html'
