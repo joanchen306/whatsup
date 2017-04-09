@@ -246,7 +246,7 @@ export class MapPage implements OnInit {
       this.findMeControl(centerControlDiv, this.map);
 
       this.map.controls[google.maps.ControlPosition.BOTTOM_RIGHT].push(centerControlDiv);
-      
+
       for (let event of this.events) {
         alert(event);
         this.createEventMarker(event);
