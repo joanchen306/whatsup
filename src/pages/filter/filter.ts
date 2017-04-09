@@ -11,6 +11,7 @@ import {EnvironmentVariable} from "../../environment/environment_variables";
 export class FilterPage {
   data:any;
   userId:string;
+  selectedFilters = ['afilter'];
 
   @ViewChild(Slides) slides:Slides;
 
@@ -38,6 +39,8 @@ export class FilterPage {
   }
 
   dismiss() {
-    this.viewCtrl.dismiss();
+    this.viewCtrl.dismiss({
+      filters: this.selectedFilters
+    });
   }
 }
