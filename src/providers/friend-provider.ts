@@ -22,25 +22,25 @@ export class FriendProvider {
     var user = {id: "", name: "", gender: "", picture: ""};
     this.friends = [];
 
-    NativeStorage.getItem('user')
-      .then(function (data) {
-        alert("data: " + JSON.stringify(data));
-
-        user = {
-          id: data.id,
-          name: data.name,
-          gender: data.gender,
-          picture: data.picture
-        };
-          //
-          // if (user != null) {
-          //   Facebook.api("/" + user.id + "/friends", function(response) {
-          //     console.log(response);
-          //
-          //   });
-          // }
-
-      });
+    // NativeStorage.getItem('user')
+    //   .then(function (data) {
+    //     alert("data: " + JSON.stringify(data));
+    //
+    //     user = {
+    //       id: data.id,
+    //       name: data.name,
+    //       gender: data.gender,
+    //       picture: data.picture
+    //     };
+    //       //
+    //       // if (user != null) {
+    //       //   Facebook.api("/" + user.id + "/friends", function(response) {
+    //       //     console.log(response);
+    //       //
+    //       //   });
+    //       // }
+    //
+    //   });
     return [];
   }
 }

@@ -6,6 +6,7 @@ import {FriendsPage} from "../pages/friends/friends";
 import {MapPage} from "../pages/map/map";
 import {MainPage} from "../pages/mainpage/mainpage";
 import {LoginPage} from "../pages/login/login";
+import {FilterPage} from "../pages/filter/filter";
 
 @Component({
   templateUrl: 'app.html'
@@ -14,7 +15,7 @@ export class MyApp {
   @ViewChild(Nav) nav:Nav;
   userId:string;
 
-  rootPage:any = LoginPage;
+  rootPage:any = MainPage;
 
   pages:Array<{title:string, component:any}>;
 
@@ -22,7 +23,7 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      {title: 'Login', component: LoginPage},
+      // {title: 'Login', component: LoginPage},
       {title: 'WhatsApp', component: EventsPage},
       {title: 'Friends', component: FriendsPage},
       {title: 'Map', component: MapPage}
@@ -34,19 +35,20 @@ export class MyApp {
   initializeApp() {
     let permissions = ["public_profile", "user_events", "user_friends"];
     this.platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      let env = this;
-      NativeStorage.getItem('user')
-        .then(function (data) {
-          //User was previously logged in
-          // TODO: Trigger Facebook login refresh
-          env.nav.push(MainPage, data.id);
-          Splashscreen.hide();
-        }, function (error) {
-          //User data not found locally
-          Splashscreen.hide();
-        });
+      // // Okay, so the platform is ready and our plugins are available.
+      // // Here you can do any higher level native things you might need.
+      // let env = this;
+      // NativeStorage.getItem('user')
+      //   .then(function (data) {
+      //     //User was previously logged in
+      //     // TODO: Trigger Facebook login refresh
+      //     env.nav.push(MainPage, data.id);
+      //     Splashscreen.hide();
+      //   }, function (error) {
+      //     //User data not found locally
+      //     Splashscreen.hide();
+      //   });
+      Splashscreen.hide();
 
       StatusBar.styleDefault();
     });

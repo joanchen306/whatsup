@@ -1,8 +1,9 @@
 import {Component, ViewChild, Input} from "@angular/core";
-import {NavController, Slides, NavParams} from "ionic-angular";
+import {NavController, Slides, NavParams, ModalController} from "ionic-angular";
 import {FacebookService} from "../../services/facebook.service";
 import {NativeStorage} from "ionic-native/dist/es5/index";
 import {EnvironmentVariable} from "../../environment/environment_variables";
+import {FilterPage} from "../filter/filter";
 
 @Component({
   selector: 'main-page',
@@ -12,15 +13,16 @@ import {EnvironmentVariable} from "../../environment/environment_variables";
 export class MainPage {
   data:any;
   userId:string;
-
   @ViewChild(Slides) slides:Slides;
 
   FRIENDS_SLIDE_INDEX:number = 0;
   MAP_SLIDE_INDEX:number = 1;
   EVENTS_LIST_SLIDE_INDEX:number = 2;
 
-  constructor(public navParams:NavParams, public navCtrl:NavController, public facebookService:FacebookService) {
+  constructor(public navParams:NavParams, public navCtrl:NavController, public facebookService:FacebookService, public modalCtrl: ModalController) {
     this.userId = navParams.data;
+    this.navCtrl = navCtrl;
+    this.modalCtrl = modalCtrl;
   }
 
   goToSlide(slideIndex) {
@@ -37,7 +39,11 @@ export class MainPage {
     }
   }
 
+  // launchEventFilterModal() {
+  //   this.navCtrl.push(FilterPage)
+  // }
   launchEventFilterModal() {
-    alert('open filter page');
+    let eventDetailsModal = this.modalCtrl.create(FilterPage);
+    eventDetailsModal.present();
   }
 }

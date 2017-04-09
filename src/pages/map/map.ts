@@ -17,18 +17,18 @@ export class MapPage implements OnInit {
     @ViewChild('map') mapElement;
     map: any;
     userMarker: any;
-    user: any;
+    // user: any;
 
     constructor(public navCtrl: NavController, public platform: Platform, public modalCtrl: ModalController) {
-        NativeStorage.getItem('user')
-        .then(function (data) {
-            this.user = {
-                id: data.id,
-                name: data.name,
-                gender: data.gender,
-                picture: data.picture
-            };
-        }.bind(this));
+        // NativeStorage.getItem('user')
+        // .then(function (data) {
+        //     this.user = {
+        //         id: data.id,
+        //         name: data.name,
+        //         gender: data.gender,
+        //         picture: data.picture
+        //     };
+        // }.bind(this));
     }
 
     ngOnInit() {}
@@ -245,7 +245,7 @@ export class MapPage implements OnInit {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(this.centerMap.bind(this), this.showError);
       } else {
-        //browser does not support geolocation 
+        //browser does not support geolocation
         alert("Browser does not support geolocation");
       }
     }
@@ -328,7 +328,7 @@ export class MapPage implements OnInit {
       let long = event.longitude;
 
       let latLng = new google.maps.LatLng(lat, long);
-    
+
       let eventMarker = new google.maps.Marker({
         position: latLng,
         map: this.map,
@@ -348,7 +348,7 @@ export class MapPage implements OnInit {
     }
 
     presentEventDetailsModal() {
-      let eventDetailsModal = this.modalCtrl.create(EventDetails, { userId: this.user.id });
-      eventDetailsModal.present();
+      // let eventDetailsModal = this.modalCtrl.create(EventDetails, { userId: this.user.id });
+      // eventDetailsModal.present();
     }
 }

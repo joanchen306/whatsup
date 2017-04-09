@@ -15,15 +15,15 @@ export class FacebookService {
   constructor(private http:Http) {
   }
 
-  public getFriends(userId:string):Observable<any[]> {
-    let url = this.graphUrl + userId + this.friendsQuery;
-
-    alert("Url: " + url);
-    return this.http
-      .get(url)
-      .map(response => {
-        alert(response.json());
-        return response.json().data;
-      });
-  }
+  // public getFriends(userId:string):Observable<any[]> {
+  //   // let url = this.graphUrl + userId + this.friendsQuery;
+  //   //
+  //   // alert("Url: " + url);
+  //   // return this.http
+  //   //   .get(url)
+  //   //   .map(response => {
+  //   //     alert(response.json());
+  //   //     return response.json().data;
+  //   //   });
+  // }
 }
