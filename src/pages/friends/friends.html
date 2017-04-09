@@ -1,5 +1,6 @@
 <ion-content>
   <ion-list>
+    <h5>{{filters}}</h5>
     <button ion-item *ngFor="let friend of friends" (click)="friendTapped(friend)">
       <h5 [ngClass]="{'active': friend.available, 'inactive':!friend.available }" >
         {{friend.name}}

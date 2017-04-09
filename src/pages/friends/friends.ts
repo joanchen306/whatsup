@@ -15,6 +15,7 @@ import {FriendDetails} from "../friendDetails/friendDetails";
 export class FriendsPage {
   selectedItem:any;
   friends:any[];
+  @Input() filters: any[];
   public friendsObservable:Observable<any[]>;
   @Input() userId:string;
 
