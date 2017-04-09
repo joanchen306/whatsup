@@ -1,6 +1,5 @@
-import { NavParams }  from "ionic-angular";
-
-import { Component } from '@angular/core';
+import {NavParams} from "ionic-angular";
+import {Component} from "@angular/core";
 
 @Component({
   selector: 'friendDetails-page',
@@ -9,7 +8,6 @@ import { Component } from '@angular/core';
 export class FriendDetails {
 
   constructor(navParams:NavParams) {
-
-    alert("GOT: " + navParams.get('name'));
+    // alert("GOT: " + navParams.name);
   }
 }

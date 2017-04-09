@@ -22,19 +22,9 @@ export class FriendsPage {
     this.friends = friendData.friends;
   }
 
-<<<<<<< HEAD
-  // itemTapped(event, item) {
-  //   // That's right, we're pushing to ourselves!
-  //   this.navCtrl.push(Page2, {
-  //     item: item
-  //   });
-  // }
 
-=======
   itemTapped(item) {
-    let friendDetailsModal = this.modalCtrl.create(FriendDetails,
-      item.name);
+    let friendDetailsModal = this.modalCtrl.create(FriendDetails);
     friendDetailsModal.present();
   }
->>>>>>> f27930491cfcb3616b15682dc861c5270c7241dd
 }

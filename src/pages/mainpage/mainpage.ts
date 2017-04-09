@@ -43,7 +43,7 @@ export class MainPage {
   //   this.navCtrl.push(FilterPage)
   // }
   launchEventFilterModal() {
-    let eventDetailsModal = this.modalCtrl.create(FilterPage);
-    eventDetailsModal.present();
+    let eventFilterModal = this.modalCtrl.create(FilterPage);
+    eventFilterModal.present();
   }
 }
