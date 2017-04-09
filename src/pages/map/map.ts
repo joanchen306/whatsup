@@ -248,7 +248,6 @@ export class MapPage implements OnInit {
       this.map.controls[google.maps.ControlPosition.BOTTOM_RIGHT].push(centerControlDiv);
       
       for (let event of this.events) {
-        alert(event);
         this.createEventMarker(event);
       }
     }
@@ -355,10 +354,10 @@ export class MapPage implements OnInit {
         title: event.name,
       });
 
-      this.eventMarkers.push(eventMarker);
       eventMarker.setMap(this.map);
       //google.maps.event.addListener(eventMarker, 'click', this.presentEventDetailsModal(event));
       //eventMarker.addListener('click', this.presentEventDetailsModal(event));
+      this.eventMarkers.push(eventMarker);
     }
 
     presentEventDetailsModal(event) {
