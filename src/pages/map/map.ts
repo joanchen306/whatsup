@@ -1,6 +1,5 @@
 import { Component, ViewChild, OnInit, Input, SimpleChanges } from '@angular/core';
 
-
 import {NavController, Platform, ModalController} from 'ionic-angular';
 
 import {NativeStorage} from "ionic-native";
@@ -23,12 +22,14 @@ export class MapPage implements OnInit {
   userMarker:any;
   events:any[];
   eventMarkers:any[];
+  eventMarkerModals:any[];
   // user: any;
 
   constructor(public navCtrl:NavController, public platform:Platform, public modalCtrl:ModalController, private eventData:EventData) {
     this.events = eventData.events;
     console.log(this.events);
     this.eventMarkers = [];
+    this.eventMarkerModals = [];
     // NativeStorage.getItem('user')
     // .then(function (data) {
     //     this.user = {
@@ -360,14 +361,14 @@ export class MapPage implements OnInit {
 
     eventMarker.setMap(this.map);
 
-    let eventDetailsModal = this.modalCtrl.create(EventDetails, {event: event});
+    var eventDetailsModal = this.modalCtrl.create(EventDetails, {event: event});
 
     eventMarker.addListener('click', function () {
       eventDetailsModal.present();
-
     });
 
     this.eventMarkers.push(eventMarker);
+    this.eventMarkerModals.push(eventDetailsModal);
   }
 
   presentEventDetailsModal(event) {
