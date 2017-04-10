@@ -1,8 +1,6 @@
-import {Component, ViewChild, Input} from "@angular/core";
+import {Component, ViewChild} from "@angular/core";
 import {NavController, Slides, NavParams, ModalController} from "ionic-angular";
 import {FacebookService} from "../../services/facebook.service";
-import {NativeStorage} from "ionic-native/dist/es5/index";
-import {EnvironmentVariable} from "../../environment/environment_variables";
 import {FilterPage} from "../filter/filter";
 
 @Component({
@@ -13,14 +11,14 @@ import {FilterPage} from "../filter/filter";
 export class MainPage {
   data:any;
   userId:string;
-  filters: [''];
+  filters:[''];
   @ViewChild(Slides) slides:Slides;
 
   FRIENDS_SLIDE_INDEX:number = 0;
   MAP_SLIDE_INDEX:number = 1;
   EVENTS_LIST_SLIDE_INDEX:number = 2;
 
-  constructor(public navParams:NavParams, public navCtrl:NavController, public facebookService:FacebookService, public modalCtrl: ModalController) {
+  constructor(public navParams:NavParams, public navCtrl:NavController, public facebookService:FacebookService, public modalCtrl:ModalController) {
     this.userId = navParams.data;
     this.navCtrl = navCtrl;
     this.modalCtrl = modalCtrl;

@@ -10,10 +10,12 @@ export class FriendDetails {
 
   constructor(navParams:NavParams, public viewCtrl:ViewController) {
     this.friend = navParams.data;
-    alert("FRIEND: " + JSON.stringify(this.friend));
   }
 
-  dismiss() {
+  showFriendLocation() {
+    // TODO: Show friend location on map
+    // TODO: Slide screen to mapview
+    this.viewCtrl.set
     this.viewCtrl.dismiss();
   }
 }
