@@ -11,7 +11,18 @@ import {EnvironmentVariable} from "../../environment/environment_variables";
 export class FilterPage {
   data:any;
   userId:string;
-  selectedFilters = ['afilter'];
+  selectedFilters: Array<string> = [];
+  filters = [
+    'Comedy',
+    'Theater/Dance',
+    'Art/Film',
+    'Music',
+    'Sports/Recreation',
+    'Food/Drink',
+    'Games',
+    'Info-Session/Seminar',
+    'Parties/Nightlife'
+  ];
 
   @ViewChild(Slides) slides:Slides;
 
@@ -37,7 +48,17 @@ export class FilterPage {
       this.slides.lockSwipes(false);
     }
   }
+  addFilter(filter) {
+    console.log(filter);
+    console.log(this.selectedFilters);
+    var index = this.selectedFilters.indexOf(filter);
+    if (index > -1) {
+      this.selectedFilters.splice(index, 1);
+    } else {
+      this.selectedFilters.push(filter);
 
+    }
+  }
   dismiss() {
     this.viewCtrl.dismiss({
       filters: this.selectedFilters
