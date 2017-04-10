@@ -376,11 +376,28 @@ export class MapPage implements OnInit {
     if (changes['friends'] != null) {
       console.log("changed:" + changes['friends'].currentValue);
 
+      var friend = changes['friends'].currentValue;
+      if (friend != null) {
+        this.showFriendMarker(friend);
+      }
     }
   }
 
   showFriendMarker(friend) {
-    // TODO
-    alert("FRIEND RECEIVED IN MAP: " + JSON.stringify(friend));
+    let friendMarker = new google.maps.Marker({
+      position: new google.maps.LatLng(friend.latitude, friend.longitude),
+      map: this.map,
+      icon: {
+        path: google.maps.SymbolPath.CIRCLE,
+        scale: 10,
+        fillOpacity: 1,
+        strokeWeight: 2,
+        fillColor: '#00ff00',
+        strokeColor: '#fff'
+      },
+      title: friend.name,
+    });
+
+    friendMarker.setMap(this.map);
   }
 }
