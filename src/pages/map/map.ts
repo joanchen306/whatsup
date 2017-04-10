@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit, Input, SimpleChange } from '@angular/core';
+import { Component, ViewChild, OnInit, Input, SimpleChanges } from '@angular/core';
 
 
 import {NavController, Platform, ModalController} from 'ionic-angular';
@@ -17,7 +17,7 @@ declare var google;
   providers: [EventData]
 })
 export class MapPage implements OnInit {
-  @Input() filters:[''];
+  @Input() filters: Array<string> = [];
   @ViewChild('map') mapElement;
   map:any;
   userMarker:any;
@@ -27,6 +27,7 @@ export class MapPage implements OnInit {
 
   constructor(public navCtrl:NavController, public platform:Platform, public modalCtrl:ModalController, private eventData:EventData) {
     this.events = eventData.events;
+    console.log(this.events);
     this.eventMarkers = [];
     // NativeStorage.getItem('user')
     // .then(function (data) {
@@ -372,5 +373,10 @@ export class MapPage implements OnInit {
   presentEventDetailsModal(event) {
     let eventDetailsModal = this.modalCtrl.create(EventDetails, {event: event});
     eventDetailsModal.present();
+  }
+  ngOnChanges(changes: SimpleChanges) {
+    console.log("changed:"+changes['filters'].currentValue);
+    
+
   }
 }

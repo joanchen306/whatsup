@@ -59,6 +59,10 @@ export class FilterPage {
 
     }
   }
+  cancel() {
+    this.selectedFilters = [];
+    this.viewCtrl.dismiss();
+  }
   dismiss() {
     this.viewCtrl.dismiss({
       filters: this.selectedFilters
