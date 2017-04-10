@@ -1,6 +1,5 @@
-import {NavController, Slides, NavParams, ViewController} from "ionic-angular";
-
-import { Component } from '@angular/core';
+import {NavController, NavParams, ViewController} from "ionic-angular";
+import {Component} from "@angular/core";
 
 @Component({
   selector: 'eventdetails-page',
@@ -19,7 +18,7 @@ export class EventDetails {
         // then if filter change, update markers
     }
 
-    dismiss() {
-        this.viewCtrl.dismiss();
-    }
+  dismiss() {
+    this.viewCtrl.dismiss();
+  }
 }
