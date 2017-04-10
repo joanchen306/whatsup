@@ -22,14 +22,11 @@ export class MapPage implements OnInit {
   userMarker:any;
   events:any[];
   eventMarkers:any[];
-  eventMarkerModals:any[];
   // user: any;
 
   constructor(public navCtrl:NavController, public platform:Platform, public modalCtrl:ModalController, private eventData:EventData) {
     this.events = eventData.events;
-    console.log(this.events);
     this.eventMarkers = [];
-    this.eventMarkerModals = [];
     // NativeStorage.getItem('user')
     // .then(function (data) {
     //     this.user = {
@@ -362,23 +359,18 @@ export class MapPage implements OnInit {
     eventMarker.setMap(this.map);
 
     var eventDetailsModal = this.modalCtrl.create(EventDetails, {event: event});
+    eventDetailsModal.onDidDismiss(eventDetails => {
+      eventDetailsModal = this.modalCtrl.create(EventDetails, {event: eventDetails});
+    });
 
     eventMarker.addListener('click', function () {
       eventDetailsModal.present();
     });
 
     this.eventMarkers.push(eventMarker);
-    this.eventMarkerModals.push(eventDetailsModal);
-  }
-
-  presentEventDetailsModal(event) {
-    let eventDetailsModal = this.modalCtrl.create(EventDetails, {event: event});
-    eventDetailsModal.present();
   }
 
   ngOnChanges(changes: SimpleChanges) {
     console.log("changed:"+changes['filters'].currentValue);
-
-
   }
 }

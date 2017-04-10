@@ -19,6 +19,6 @@ export class EventDetails {
     }
 
   dismiss() {
-    this.viewCtrl.dismiss();
+    this.viewCtrl.dismiss(this.event);
   }
 }
