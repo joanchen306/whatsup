@@ -10,8 +10,8 @@ export class FriendData {
       {
         name:'Aaron Parry',
         available:true,
-        latitude: 33.7737551,
-        longitude: -84.3921202,
+        latitude: 33.781308,
+        longitude:  -84.402112,
         displayed:false
       },
       {
