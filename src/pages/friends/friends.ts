@@ -12,7 +12,7 @@ export class FriendsPage {
   friends:any[];
   @Input() filters:any[];
   @Input() userId:string;
-
+  @Output() friendRequested: EventEmitter<any> = new EventEmitter<string>();
   constructor(public navCtrl:NavController, public navParams:NavParams, private friendData:FriendData, private modalCtrl:ModalController) {
     this.friends = friendData.friends;
   }
@@ -23,6 +23,7 @@ export class FriendsPage {
       // TODO:
       if (data.locationRequested) {
         // TODO: Show location
+        this.friendsRequested.emit(data);
       }
     });
     friendDetailsModal.present();

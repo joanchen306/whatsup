@@ -49,4 +49,7 @@ export class MainPage {
     })
     eventFilterModal.present();
   }
+  handleFriendRequested(data) {
+    //TODO handle friend request
+  }
 }
