@@ -1,11 +1,6 @@
-import { Component, ViewChild, OnInit, Input, SimpleChanges } from '@angular/core';
-
-import {NavController, Platform, ModalController} from 'ionic-angular';
-
-import {NativeStorage} from "ionic-native";
-
+import {Component, ViewChild, OnInit, Input, SimpleChanges} from "@angular/core";
+import {NavController, Platform, ModalController} from "ionic-angular";
 import {EventDetails} from "../eventdetails/eventdetails";
-
 import {EventData} from "../../data/eventData";
 
 declare var google;
@@ -16,7 +11,8 @@ declare var google;
   providers: [EventData]
 })
 export class MapPage implements OnInit {
-  @Input() filters: Array<string> = [];
+  @Input() filters:Array<string> = [];
+  @Input() friends:Array<any> = [];
   @ViewChild('map') mapElement;
   map:any;
   userMarker:any;
@@ -370,7 +366,21 @@ export class MapPage implements OnInit {
     this.eventMarkers.push(eventMarker);
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    console.log("changed:"+changes['filters'].currentValue);
+  ngOnChanges(changes:SimpleChanges) {
+    console.log("Changes: " + JSON.stringify(changes));
+
+    if (changes['filters'] != null) {
+      console.log("changed:" + changes['filters'].currentValue);
+    }
+
+    if (changes['friends'] != null) {
+      console.log("changed:" + changes['friends'].currentValue);
+
+    }
+  }
+
+  showFriendMarker(friend) {
+    // TODO
+    alert("FRIEND RECEIVED IN MAP: " + JSON.stringify(friend));
   }
 }

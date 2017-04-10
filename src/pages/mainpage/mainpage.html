@@ -1,19 +1,24 @@
 <ion-header no-border>
   <ion-toolbar id="search-toolbar">
-    <ion-title>  <ion-icon id="profile-icon" ios="ios-contact" md="md-contact"></ion-icon> NowWhat {{filters}} <ion-icon id="search-icon" ios="ios-search" md="md-search"></ion-icon> </ion-title>
+    <ion-title>
+      <ion-icon id="profile-icon" ios="ios-contact" md="md-contact"></ion-icon>
+      NowWhat {{filters}}
+      <ion-icon id="search-icon" ios="ios-search" md="md-search"></ion-icon>
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
   <ion-slides initialSlide="1" (ionSlideDidChange)="onSlideDidChange()">
     <ion-slide>
-      <friends-list [userId]="userId" (friendRequested)="handleFriendRequested($event)" [filters]="filters"></friends-list>
+      <friends-list [userId]="userId" (friendsRequested)="handleFriendRequested($event)"
+                    [filters]="filters"></friends-list>
     </ion-slide>
     <ion-slide>
       <div>
         <div #swipeRightWrap class="swipe right" (swiperight)="goToSlide(FRIENDS_SLIDE_INDEX)"></div>
         <div #swipeLeftWrap class="swipe left" (swipeleft)="goToSlide(EVENTS_LIST_SLIDE_INDEX)"></div>
-        <map-page [filters]="filters"></map-page>
+        <map-page [filters]="filters" [friends]="friendsSharingLocation"></map-page>
         <div #swipeUpWrap class="swipeup" (click)="launchEventFilterModal()"></div>
       </div>
     </ion-slide>

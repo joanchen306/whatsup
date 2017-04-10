@@ -11,6 +11,7 @@ import {FilterPage} from "../filter/filter";
 export class MainPage {
   data:any;
   userId:string;
+  friendsSharingLocation:Array<any> = [];
   filters:[''];
   @ViewChild(Slides) slides:Slides;
 
@@ -46,10 +47,13 @@ export class MainPage {
     eventFilterModal.onDidDismiss(data => {
       this.filters = data.filters;
       console.log(data.filters);
-    })
+    });
     eventFilterModal.present();
   }
-  handleFriendRequested(data) {
+
+  handleFriendRequested(friend) {
     //TODO handle friend request
+    this.friendsSharingLocation.push(friend);
+    this.goToSlide(1);
   }
 }
