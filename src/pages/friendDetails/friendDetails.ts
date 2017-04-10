@@ -6,9 +6,11 @@ import {Component} from "@angular/core";
   templateUrl: 'friendDetails.html'
 })
 export class FriendDetails {
+  friend:any;
 
   constructor(navParams:NavParams, public viewCtrl:ViewController) {
-    // alert("GOT: " + navParams.get('name'));
+    this.friend = navParams.data;
+    alert("FRIEND: " + JSON.stringify(this.friend));
   }
 
   dismiss() {
