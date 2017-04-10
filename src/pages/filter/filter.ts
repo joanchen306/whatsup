@@ -1,8 +1,5 @@
-import {Component, ViewChild, Input} from "@angular/core";
-import {Nav, NavController, Slides, NavParams, ViewController} from "ionic-angular";
-import {FacebookService} from "../../services/facebook.service";
-import {NativeStorage} from "ionic-native/dist/es5/index";
-import {EnvironmentVariable} from "../../environment/environment_variables";
+import {Component, ViewChild} from "@angular/core";
+import {NavController, Slides, NavParams, ViewController} from "ionic-angular";
 
 @Component({
   selector: 'filter-page',
@@ -11,7 +8,7 @@ import {EnvironmentVariable} from "../../environment/environment_variables";
 export class FilterPage {
   data:any;
   userId:string;
-  selectedFilters: Array<string> = [];
+  selectedFilters:Array<string> = [];
   filters = [
     'Comedy',
     'Theater/Dance',
@@ -30,7 +27,7 @@ export class FilterPage {
   MAP_SLIDE_INDEX:number = 1;
   EVENTS_LIST_SLIDE_INDEX:number = 2;
 
-  constructor(public navParams:NavParams, public navCtrl:NavController, public viewCtrl: ViewController) {
+  constructor(public navParams:NavParams, public navCtrl:NavController, public viewCtrl:ViewController) {
     this.userId = navParams.data;
     this.viewCtrl = viewCtrl;
   }
@@ -48,6 +45,7 @@ export class FilterPage {
       this.slides.lockSwipes(false);
     }
   }
+
   addFilter(filter) {
     console.log(filter);
     console.log(this.selectedFilters);
@@ -59,10 +57,12 @@ export class FilterPage {
 
     }
   }
+
   cancel() {
     this.selectedFilters = [];
     this.viewCtrl.dismiss();
   }
+
   dismiss() {
     this.viewCtrl.dismiss({
       filters: this.selectedFilters

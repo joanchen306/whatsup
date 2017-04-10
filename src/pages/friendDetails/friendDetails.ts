@@ -15,7 +15,9 @@ export class FriendDetails {
   showFriendLocation() {
     // TODO: Show friend location on map
     // TODO: Slide screen to mapview
-    this.viewCtrl.set
-    this.viewCtrl.dismiss();
+    this.viewCtrl.dismiss({
+      locationRequested: true,
+      friend: this.friend
+    });
   }
 }

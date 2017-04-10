@@ -19,7 +19,12 @@ export class FriendsPage {
 
   friendTapped(friend) {
     let friendDetailsModal = this.modalCtrl.create(FriendDetails, friend);
-    // TODO: Pass in friend details
+    friendDetailsModal.onDidDismiss(data => {
+      // TODO:
+      if (data.locationRequested) {
+        // TODO: Show location
+      }
+    });
     friendDetailsModal.present();
   }
 }
