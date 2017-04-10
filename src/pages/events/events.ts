@@ -1,6 +1,7 @@
-import {Component} from "@angular/core";
-import {NavController} from "ionic-angular";
-import {EventData} from "../../data/eventData";
+import { Component } from "@angular/core";
+import { NavController, ModalController } from "ionic-angular";
+import { EventData } from "../../data/eventData";
+import { EventDetails } from "../eventdetails/eventdetails";
 //import {EventProvider} from '../../providers/event-provider';
 
 @Component({
@@ -12,12 +13,17 @@ export class EventsPage {
   events:any[];
 
 
-  constructor(public navCtrl:NavController, private eventData:EventData) {
+  constructor(public navCtrl:NavController, private eventData:EventData, private modalCtrl:ModalController) {
     this.events = eventData.events;
   }
 
   eventTapped(event) {
-    // TODO: Launch event modal
+    var eventDetailsModal = this.modalCtrl.create(EventDetails, {event: event});
+    eventDetailsModal.onDidDismiss(eventDetails => {
+      eventDetailsModal = this.modalCtrl.create(EventDetails, {event: eventDetails});
+    });
+
+   eventDetailsModal.present();
   }
 
 }
