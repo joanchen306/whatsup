@@ -1,5 +1,5 @@
 {
-  "name": "WhatsUp",
+  "name": "NowWhat",
   "author": "Ionic Framework",
   "homepage": "http://ionicframework.com/",
   "private": true,
@@ -48,5 +48,5 @@
       "locator": "ios"
     }
   ],
-  "description": "whatsUpApp: An Ionic project"
+  "description": "NowWhat: An Ionic project"
 }

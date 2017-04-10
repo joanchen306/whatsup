@@ -374,9 +374,10 @@ export class MapPage implements OnInit {
     let eventDetailsModal = this.modalCtrl.create(EventDetails, {event: event});
     eventDetailsModal.present();
   }
+
   ngOnChanges(changes: SimpleChanges) {
     console.log("changed:"+changes['filters'].currentValue);
-    
+
 
   }
 }
