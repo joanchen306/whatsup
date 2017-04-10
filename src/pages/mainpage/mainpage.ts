@@ -11,7 +11,7 @@ import {FilterPage} from "../filter/filter";
 export class MainPage {
   data:any;
   userId:string;
-  friendsSharingLocation:Array<any> = [];
+  friendsSharingLocation;
   filters:[''];
   @ViewChild(Slides) slides:Slides;
 
@@ -53,7 +53,8 @@ export class MainPage {
 
   handleFriendRequested(friend) {
     //TODO handle friend request
-    this.friendsSharingLocation.push(friend);
+    console.log("event heard:"+JSON.stringify(friend))
+    this.friendsSharingLocation = friend;
     this.goToSlide(1);
   }
 }
