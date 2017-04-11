@@ -20,13 +20,13 @@ map-page {
   position: absolute;
   top: 50px;
   bottom: 50px;
-  /* class right refers to the swipe 
+  /* class right refers to the swipe
   right action not screen location */
 }
 .right {
   left: 0;
 }
-/* class left refers to the swipe 
+/* class left refers to the swipe
 left action not screen location */
 .left {
   right: 0;
@@ -41,12 +41,12 @@ left action not screen location */
   bottom: 0;
 }
 
-.toolbar-background, .toolbar-background-ios { 
+.toolbar-background, .toolbar-background-ios {
   background-color: rgba(0, 0, 0, 1) !important;
   color: #ffffff !important;
 }
 
-#search-toolbar { 
+#search-toolbar {
   padding:0;
 }
 
