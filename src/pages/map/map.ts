@@ -391,10 +391,21 @@ export class MapPage implements OnInit {
 
   ngOnChanges(changes:SimpleChanges) {
     console.log("Changes: " + JSON.stringify(changes));
+    console.log('changes[filters] ' + changes);
 
-    if (changes['filters'] != null) {
-      console.log("changed:" + changes['filters'].currentValue);
-      //changes['filters'].currentValue.indexof('Movies')
+    if (changes != null || typeof changes != 'undefined') {
+      if (changes['filters'] != null || typeof changes['filters'] != 'undefined') {
+        console.log("changed:" + changes['filters'].currentValue);
+        for (let event of this.events) {
+          /*
+          if (changes['filters'].currentValue.indexOf(event.category) >= 0) {
+            this.eventMarkers[event].setMap(this.map);
+          } else {
+            this.eventMarkers[event].setMap(null);
+          }
+          */
+        }
+      }
     }
 
     if (changes['friends'] != null) {
