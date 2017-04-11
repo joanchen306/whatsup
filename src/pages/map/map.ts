@@ -126,7 +126,7 @@ export class MapPage implements OnInit {
           "elementType": "all",
           "stylers": [
             {
-              "color": "#000000"
+              "color": "#222638"
             }
           ]
         },
