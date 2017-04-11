@@ -20,11 +20,13 @@ export class MapPage implements OnInit {
   events:any[];
   eventMarkers:Map<any, any>;
   friendMarkers = {};
+  mapLoaded: Boolean = false;
   // user: any;
 
   constructor(public navCtrl:NavController, public platform:Platform, public modalCtrl:ModalController, private eventData:EventData) {
     this.events = eventData.events;
     this.eventMarkers = new Map<any, any>();
+
     // NativeStorage.getItem('user')
     // .then(function (data) {
     //     this.user = {
@@ -250,6 +252,8 @@ export class MapPage implements OnInit {
     for (let event of this.events) {
       this.createEventMarker(event);
     }
+
+    this.mapLoaded = true;
   }
 
   centerToMyLocation() {
@@ -387,23 +391,38 @@ export class MapPage implements OnInit {
     });
 
     this.eventMarkers[event] = eventMarker;
+
+    /*
+    if (event.category == "Games") {
+      this.eventMarkers[event].setMap(null);
+    }
+    */
+  }
+
+  removeEventMarker(event) {
+    if (this.eventMarkers[event] != null) {
+      this.eventMarkers[event].setMap(null);
+      this.eventMarkers[event] = null;
+    }
   }
 
   ngOnChanges(changes:SimpleChanges) {
-    console.log("Changes: " + JSON.stringify(changes));
-    console.log('changes[filters] ' + changes);
+    //console.log("Changes: " + JSON.stringify(changes));
 
-    if (changes != null || typeof changes != 'undefined') {
+    if (this.mapLoaded) {
       if (changes['filters'] != null || typeof changes['filters'] != 'undefined') {
-        console.log("changed:" + changes['filters'].currentValue);
         for (let event of this.events) {
-          /*
+          //console.log("indexOf: " + changes['filters'].currentValue.indexOf(event.category));
+          //console.log(event.category);
           if (changes['filters'].currentValue.indexOf(event.category) >= 0) {
-            this.eventMarkers[event].setMap(this.map);
+            //console.log("add marker");
+            if (this.eventMarkers[event] != null) {
+              this.createEventMarker(event);
+            }
           } else {
-            this.eventMarkers[event].setMap(null);
+            //console.log("remove marker");
+            this.removeEventMarker(event);
           }
-          */
         }
       }
     }
