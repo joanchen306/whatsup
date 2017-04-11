@@ -398,12 +398,12 @@ export class MapPage implements OnInit {
         console.log("changed:" + changes['filters'].currentValue);
         for (let event of this.events) {
           /*
-          if (changes['filters'].currentValue.indexOf(event.category) >= 0) {
-            this.eventMarkers[event].setMap(this.map);
-          } else {
-            this.eventMarkers[event].setMap(null);
-          }
-          */
+           if (changes['filters'].currentValue.indexOf(event.category) >= 0) {
+           this.eventMarkers[event].setMap(this.map);
+           } else {
+           this.eventMarkers[event].setMap(null);
+           }
+           */
         }
       }
     }
@@ -420,9 +420,9 @@ export class MapPage implements OnInit {
   }
 
   showFriendMarker(friend) {
-    console.log(friend.name);
+    var latLng = new google.maps.LatLng(friend.latitude, friend.longitude);
     let friendMarker = new google.maps.Marker({
-      position: new google.maps.LatLng(friend.latitude, friend.longitude),
+      position: latLng,
       map: this.map,
       icon: {
         path: google.maps.SymbolPath.CIRCLE,
@@ -434,8 +434,10 @@ export class MapPage implements OnInit {
       },
       title: friend.name,
     });
-    console.log("friend marker: "+friendMarker);
+    console.log("friend marker: " + friendMarker);
     friendMarker.setMap(this.map);
+
+    this.map.setCenter(latLng);
 
     var friendDetailsModal = this.modalCtrl.create(FriendDetailsMap, friend);
     friendDetailsModal.onDidDismiss(friendDetails => {
