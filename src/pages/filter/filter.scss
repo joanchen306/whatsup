@@ -1,0 +1,30 @@
+#filter-confirm{
+    margin-left: 10vw;
+    border: none;
+    margin-bottom: 4vh;
+}
+
+#filter-list {
+    border-bottom: none;
+}
+
+.filter-icon {
+    padding-left: 5vw; 
+    padding-right: 5vw;
+}
+
+.dark {
+    color: #414151 !important;
+
+    ion-label {
+        color: #414151 !important;
+    }
+
+    ion-icon {
+        color: #414151 !important;
+    }
+
+    div {
+       color: #414151 !important; 
+    }
+}

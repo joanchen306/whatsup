@@ -46,8 +46,8 @@ export class MapPage implements OnInit {
   }
 
   initMap() {
-    let lat = 35.000;
-    let long = -84.000;
+    let lat = 33.7818079;
+    let long = -84.3973634;
 
     let latLng = new google.maps.LatLng(lat, long);
 
