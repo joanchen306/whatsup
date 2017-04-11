@@ -12,7 +12,17 @@ export class MainPage {
   data:any;
   userId:string;
   friendsSharingLocation;
-  filters:[''];
+  filters = [
+    'Comedy',
+    'Theater/Dance',
+    'Art/Film',
+    'Music',
+    'Sports/Recreation',
+    'Food/Drink',
+    'Games',
+    'Info-Session/Seminar',
+    'Parties/Nightlife'
+  ];
   @ViewChild(Slides) slides:Slides;
 
   FRIENDS_SLIDE_INDEX:number = 0;

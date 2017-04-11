@@ -19,12 +19,14 @@ export class MapPage implements OnInit {
   userMarker:any;
   events:any[];
   eventMarkers:Map<any, any>;
-  friendMarkers:Map<any, any>;
+  friendMarkers = {};
+  mapLoaded: Boolean = false;
   // user: any;
 
   constructor(public navCtrl:NavController, public platform:Platform, public modalCtrl:ModalController, private eventData:EventData) {
     this.events = eventData.events;
     this.eventMarkers = new Map<any, any>();
+
     // NativeStorage.getItem('user')
     // .then(function (data) {
     //     this.user = {
@@ -250,6 +252,8 @@ export class MapPage implements OnInit {
     for (let event of this.events) {
       this.createEventMarker(event);
     }
+
+    this.mapLoaded = true;
   }
 
   centerToMyLocation() {
@@ -387,14 +391,40 @@ export class MapPage implements OnInit {
     });
 
     this.eventMarkers[event] = eventMarker;
+
+    /*
+    if (event.category == "Games") {
+      this.eventMarkers[event].setMap(null);
+    }
+    */
+  }
+
+  removeEventMarker(event) {
+    if (this.eventMarkers[event] != null) {
+      this.eventMarkers[event].setMap(null);
+      this.eventMarkers[event] = null;
+    }
   }
 
   ngOnChanges(changes:SimpleChanges) {
-    console.log("Changes: " + JSON.stringify(changes));
+    //console.log("Changes: " + JSON.stringify(changes));
 
-    if (changes['filters'] != null) {
-      console.log("changed:" + changes['filters'].currentValue);
-      //changes['filters'].currentValue.indexof('Movies')
+    if (this.mapLoaded) {
+      if (changes['filters'] != null || typeof changes['filters'] != 'undefined') {
+        for (let event of this.events) {
+          //console.log("indexOf: " + changes['filters'].currentValue.indexOf(event.category));
+          //console.log(event.category);
+          if (changes['filters'].currentValue.indexOf(event.category) >= 0) {
+            //console.log("add marker");
+            if (this.eventMarkers[event] != null) {
+              this.createEventMarker(event);
+            }
+          } else {
+            //console.log("remove marker");
+            this.removeEventMarker(event);
+          }
+        }
+      }
     }
 
     if (changes['friends'] != null) {
@@ -402,14 +432,16 @@ export class MapPage implements OnInit {
 
       var friend = changes['friends'].currentValue;
       if (friend != null) {
+        // console.log("changed:" + friend.name);
         this.showFriendMarker(friend);
       }
     }
   }
 
   showFriendMarker(friend) {
+    var latLng = new google.maps.LatLng(friend.latitude, friend.longitude);
     let friendMarker = new google.maps.Marker({
-      position: new google.maps.LatLng(friend.latitude, friend.longitude),
+      position: latLng,
       map: this.map,
       icon: {
         path: google.maps.SymbolPath.CIRCLE,
@@ -421,8 +453,10 @@ export class MapPage implements OnInit {
       },
       title: friend.name,
     });
-
+    console.log("friend marker: " + friendMarker);
     friendMarker.setMap(this.map);
+
+    this.map.setCenter(latLng);
 
     var friendDetailsModal = this.modalCtrl.create(FriendDetailsMap, friend);
     friendDetailsModal.onDidDismiss(friendDetails => {
@@ -432,7 +466,6 @@ export class MapPage implements OnInit {
     friendMarker.addListener('click', function () {
       friendDetailsModal.present();
     });
-
     this.friendMarkers[friend] = friendMarker;
   }
 }
