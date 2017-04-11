@@ -9,6 +9,7 @@ export class EventData {
       address: "817 West Peachtree St NW, Atlanta, GA 30308",
       latitude: 33.777385,
       longitude: -84.386115,
+      distance: 0.183090304253
     },
     {
       name: 'Easter Glass Blowing',
@@ -19,6 +20,7 @@ export class EventData {
       address: "250 Freeman Street, Decatur, Georgia 30030",
       latitude: 33.772078,
       longitude: -84.287371,
+      distance: 5.86206238886
     },
     {
       name: 'Zuchero',
@@ -29,6 +31,7 @@ export class EventData {
       address: "1374 West Peachtree Street, Atlanta, Georgia 30309",
       latitude: 33.792034,
       longitude: -84.387980,
+      distance: 1.01505530261
     },
     {
       name: 'The Decemberists',
@@ -39,6 +42,7 @@ export class EventData {
       address: "660 Peachtree Street NE, Atlanta, Georgia 30308",
       latitude: 33.772620,
       longitude: -84.385561,
+      distance: 0.392403457742
     },
     {
       name: 'Catch the Wave with Our Ocean Creatures Series! in Atlanta',
@@ -49,6 +53,7 @@ export class EventData {
       address: "395 Mount Vernon Highway, Atlanta, Georgia, 30328",
       latitude: 33.924097,
       longitude: -84.374329,
+      distance:10.1674796374
     },
     {
       name: 'Burger Night at HAVEN',
@@ -59,6 +64,7 @@ export class EventData {
       address: "1441 Dresden Dr., Atlanta, Georgia, 30319",
       latitude: 33.860913,
       longitude: -84.330209,
+      distance: 6.69075693028
     },
     {
       name: 'Atlanta Dance Class',
@@ -69,6 +75,7 @@ export class EventData {
       address: "8830 Gurley Road, Atlanta, GA, 30134",
       latitude: 33.739753,
       longitude: -84.770565,
+      distance: 22.0406803708
     },
     {
       name: 'Kats Cafe Comedy Jam',
@@ -79,6 +86,7 @@ export class EventData {
       address: "970 Piedmont Rd, Atlanta, GA, 30309",
       latitude: 33.781126,
       longitude: -84.380938,
+      distance: 0.545606021544
     },
     {
       name: 'Too Funny Tuesday',
@@ -89,6 +97,7 @@ export class EventData {
       address: "2030 Bolton Road, Atlanta, GA, 30318",
       latitude: 33.811437,
       longitude: -84.475468,
+      distance: 5.47521410577
     },
     {
       name: 'Happy Hour @ Da Bomb',
@@ -99,6 +108,7 @@ export class EventData {
       address: "2912 Evans Mill Rd, Atlanta, GA, 30038",
       latitude: 33.698567,
       longitude: -84.118630,
+      distance: 16.4675028661
     },
     {
       name: 'Tease Tuesday',
@@ -109,6 +119,7 @@ export class EventData {
       address: "553-1 Amsterdam Avenue, Atlanta, GA, 30306",
       latitude: 33.788153,
       longitude: -84.368868,
+      distance:1.38908487856
     },
     {
       name: 'Chipper Jones Book Signing',
@@ -119,6 +130,7 @@ export class EventData {
       address: "6000 N Terminal Pkwy, Atlanta, GA 30320",
       latitude: 33.640776,
       longitude: -84.444326,
+      distance:9.94755064606
     },
     {
       name: 'Art in the Park',
@@ -129,6 +141,7 @@ export class EventData {
       address: "231 18th Street NW, Atlanta, GA, 30363",
       latitude: 33.792606,
       longitude: -84.395530,
+      distance:1.1107201668
     },
     {
       name: 'SCPC Arts and Culture: Take-A-Prof',
@@ -139,6 +152,7 @@ export class EventData {
       address: "Wenn Student Center/Post Office, 350 Ferst Dr NW, Atlanta, GA 30332",
       latitude: 33.774183,
       longitude: -84.398787,
+      distance:0.587163491738
     },
     {
       name: 'AHS Lunch & Learn: Aerial Reporting with Mark McKay',
@@ -149,6 +163,7 @@ export class EventData {
       address: "265 North Avenue NE, Atlanta, GA 30308",
       latitude: 33.771415,
       longitude: -84.378377,
+      distance:0.750187014429
     },
     {
       name: 'Undergraudate Research Fair',
@@ -159,6 +174,7 @@ export class EventData {
       address: "266 Ferst Dr NW, Atlanta, GA 30332",
       latitude: 33.777684,
       longitude: -84.396181,
+      distance:0.39522084112
     },
     {
       name: 'Study Abroad 101',
@@ -169,6 +185,7 @@ export class EventData {
       address: "Savant Building, 631 Cherry St NW, Atlanta, GA 30313",
       latitude: 33.772081,
       longitude: -84.395278,
+      distance:0.501157097712
     },
     {
       name: 'Nano@Tech: Digitally Coded Microfluidic Devices',
@@ -179,6 +196,7 @@ export class EventData {
       address: "Marcus Nanotechnology Building, 345 Ferst Drive, Atlanta, GA 30332",
       latitude: 33.779059,
       longitude: -84.398629,
+      distance:0.547629350079
     },
     {
       name: 'Patents Search Class',
@@ -189,6 +207,7 @@ export class EventData {
       address: "266 4th St NW, Atlanta, GA 30332",
       latitude: 33.774920,
       longitude: -84.396415,
+      distance:0.441889836185
     },
     {
       name: 'Rec-a-palooza',
@@ -199,6 +218,7 @@ export class EventData {
       address: "750 Ferst Dr NW, Atlanta, GA 30318",
       latitude: 33.775525,
       longitude: -84.403912,
+      distance:0.848048009864
     },
     {
       name: 'Global Media Fest: Screening of Demain',
@@ -209,6 +229,7 @@ export class EventData {
       address: "225 North Ave. NW, Atlanta, GA 30332",
       latitude: 33.772417,
       longitude: -84.394792,
+      distance:0.465173278422
     },
     {
       name: 'FSLO Leadership Summit',
@@ -219,6 +240,7 @@ export class EventData {
       address: "Wenn Student Center/Post Office, 350 Ferst Dr NW, Atlanta, GA 30332",
       latitude: 33.774183,
       longitude: -84.398787,
+      distance:0.58716349173
     },
     {
       name: 'Paper and Clay : Stained Glass Class',
@@ -229,6 +251,7 @@ export class EventData {
       address: "350 Ferst Dr NW, Atlanta, GA 30313",
       latitude: 33.773858,
       longitude: -84.398791,
+      distance: 0.596161108959
     },
     {
       name: 'Veil of Ignorance',
@@ -239,6 +262,7 @@ export class EventData {
       address: "874 Joseph E Lowery Blvd NW, Atlanta, GA 30318",
       latitude: 33.778643,
       longitude: -84.417762,
+      distance:1.63561086779
     },
     {
       name: 'Daniel Arsham: Hourglass',
@@ -249,6 +273,7 @@ export class EventData {
       address: "1280 West Peachtree St NW, Atlanta, GA 30309",
       latitude: 33.789585,
       longitude: -84.388522,
+      distance:0.84429644128
     },
     {
       name: 'Capstone Exhibition II',
@@ -259,6 +284,7 @@ export class EventData {
       address: "492 Prillaman Way, Kennesaw, GA 30144",
       latitude: 34.041030,
       longitude: -84.583426,
+      distance:21.3350676357
     },
     {
       name: 'Atlanta Hawks vs. Charlotte Hornets',
@@ -269,6 +295,7 @@ export class EventData {
       address: "1 Philips Dr, Atlanta, GA 30303",
       latitude: 33.757168,
       longitude: -84.396345,
+      distance:1.45263254634
     },
     {
       name: 'Wind Orchestra and Concert Band',
@@ -279,6 +306,7 @@ export class EventData {
       address: "80 Forsyth St SW, Atlanta, GA 30303",
       latitude: 33.752250,
       longitude: -84.393667,
+      distance:1.75285584613
     }
   ]
 }
