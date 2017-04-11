@@ -70,7 +70,6 @@ export class MainPage {
 
   isSelected(filter) {
     console.log(this.filters);
-    //return (this.filters.indexOf(filter) != -1);
-    return true;
+    return (this.filters.indexOf(filter) != -1);
   }
 }
