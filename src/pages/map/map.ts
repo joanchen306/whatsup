@@ -19,7 +19,7 @@ export class MapPage implements OnInit {
   userMarker:any;
   events:any[];
   eventMarkers:Map<any, any>;
-  friendMarkers:Map<any, any>;
+  friendMarkers = {};
   // user: any;
 
   constructor(public navCtrl:NavController, public platform:Platform, public modalCtrl:ModalController, private eventData:EventData) {
@@ -413,12 +413,14 @@ export class MapPage implements OnInit {
 
       var friend = changes['friends'].currentValue;
       if (friend != null) {
+        // console.log("changed:" + friend.name);
         this.showFriendMarker(friend);
       }
     }
   }
 
   showFriendMarker(friend) {
+    console.log(friend.name);
     let friendMarker = new google.maps.Marker({
       position: new google.maps.LatLng(friend.latitude, friend.longitude),
       map: this.map,
@@ -432,7 +434,7 @@ export class MapPage implements OnInit {
       },
       title: friend.name,
     });
-
+    console.log("friend marker: "+friendMarker);
     friendMarker.setMap(this.map);
 
     var friendDetailsModal = this.modalCtrl.create(FriendDetailsMap, friend);
@@ -443,7 +445,6 @@ export class MapPage implements OnInit {
     friendMarker.addListener('click', function () {
       friendDetailsModal.present();
     });
-
     this.friendMarkers[friend] = friendMarker;
   }
 }
