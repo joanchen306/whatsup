@@ -58,6 +58,10 @@ export class FilterPage {
     }
   }
 
+  isSelected(filter) {
+    return (this.selectedFilters.indexOf(filter) != -1);
+  }
+
   cancel() {
     this.selectedFilters = [];
     this.viewCtrl.dismiss();

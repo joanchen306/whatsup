@@ -8,13 +8,22 @@
 
 
 
-  <ion-list>
+  <ion-list id="filter-list">
 
     <ion-list-header>
       Categories
     </ion-list-header>
 
-    <ion-item *ngFor="let filter of filters" (click)="addFilter(filter)">
+    <ion-item *ngFor="let filter of filters" (click)="addFilter(filter)" [ngClass]="{white: isSelected(filter), dark: !isSelected(filter)}">
+      <ion-icon *ngIf="filter=='Comedy'" class="filter-icon" ios="ios-happy" md="md-happy"></ion-icon>
+      <ion-icon *ngIf="filter=='Theater/Dance'" class="filter-icon" ios="ios-star-outline" md="md-star-outline"></ion-icon>
+      <ion-icon *ngIf="filter=='Art/Film'" class="filter-icon" ios="ios-film" md="md-film"></ion-icon>
+      <ion-icon *ngIf="filter=='Music'" class="filter-icon" ios="ios-musical-notes" md="md-musical-notes"></ion-icon>
+      <ion-icon *ngIf="filter=='Sports/Recreation'" class="filter-icon" ios="ios-basketball" md="md-basketball"></ion-icon>
+      <ion-icon *ngIf="filter=='Food/Drink'" class="filter-icon" ios="ios-pizza" md="md-pizza"></ion-icon>
+      <ion-icon *ngIf="filter=='Games'" class="filter-icon" ios="ios-game-controller-b" md="md-game-controller-b"></ion-icon>
+      <ion-icon *ngIf="filter=='Info-Session/Seminar'" class="filter-icon" ios="ios-information-circle" md="md-information-circle"></ion-icon>
+      <ion-icon *ngIf="filter=='Parties/Nightlife'" class="filter-icon" ios="ios-wine" md="md-wine"></ion-icon>
       {{filter}}
       <!-- <ion-icon name='color-wand' item-left></ion-icon> -->
       <!-- <ion-note item-right>Crucio!</ion-note> -->
@@ -22,15 +31,10 @@
 
 
   </ion-list>
-  <ion-list>
-    <ion-item (click)="dismiss()">
-      Confirm
+
+      <button (click)="dismiss()" class="btn-blue" id="filter-confirm"> Confirm</button>
       <!-- <ion-icon name='color-wand' item-left></ion-icon> -->
       <!-- <ion-note item-right>Crucio!</ion-note> -->
-    </ion-item>
-
-
-  </ion-list>
 <!--
   <ion-list>
 

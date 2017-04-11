@@ -57,4 +57,10 @@ export class MainPage {
     this.friendsSharingLocation = friend;
     this.goToSlide(1);
   }
+
+  isSelected(filter) {
+    console.log(this.filters);
+    //return (this.filters.indexOf(filter) != -1);
+    return true;
+  }
 }

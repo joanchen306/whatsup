@@ -1,9 +1,15 @@
 <ion-content>
-    <button (click)="dismiss()">Close</button>
-    <h1 style="color:gainsboro">{{event.name}}</h1>
-    <h3 style="color:gainsboro">{{event.category}}</h3>
-    <h3 style="color:gainsboro">{{event.start}}</h3>
-    <h3 style="color:gainsboro">{{event.end}}</h3>
-    <h3 style="color:gainsboro">{{event.address}}</h3>
-    <h3 style="color:gainsboro">{{event.promoter}}</h3>
+    <div id="event-det-container">
+    <h1>{{event.name}}</h1>
+    <h3 class="grey">{{event.category}}</h3>
+    <div id="info-div">
+        <h3>{{event.start}} - {{event.end}}</h3>
+        <h3>{{event.address}}</h3>
+        <h3>{{event.promoter}}</h3>
+    </div>
+    <div>
+        <button (click)="dismiss()" class="btn-blue">Go Now!</button>
+        <button (click)="dismiss()" class="btn-red">Close</button>
+    </div>
+    </div>
 </ion-content>
