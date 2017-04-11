@@ -6,19 +6,24 @@ import {Component} from "@angular/core";
   templateUrl: 'eventdetails.html'
 })
 export class EventDetails {
-    userId: any;
-    event: any;
+  userId:any;
+  event:any;
 
-    constructor(public navParams:NavParams, public navCtrl:NavController, public viewCtrl: ViewController) {
-        this.userId = navParams.data;
-        this.viewCtrl = viewCtrl;
-        this.event = navParams.get('event');
-        console.log(this.event);
-        //ng-on-change to detect filter change
-        // then if filter change, update markers
-    }
+  constructor(public navParams:NavParams, public navCtrl:NavController, public viewCtrl:ViewController) {
+    this.userId = navParams.data;
+    this.viewCtrl = viewCtrl;
+    this.event = navParams.get('event');
+    console.log(this.event);
+    //ng-on-change to detect filter change
+    // then if filter change, update markers
+  }
 
   dismiss() {
     this.viewCtrl.dismiss(this.event);
+  }
+
+  requestUber() {
+    this.viewCtrl.dismiss(this.event);
+    alert("Uber to " + this.event.address + " requested! Opening Uber.");
   }
 }
