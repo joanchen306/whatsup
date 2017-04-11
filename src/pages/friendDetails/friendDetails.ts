@@ -20,4 +20,10 @@ export class FriendDetails {
       friend: this.friend
     });
   }
+
+  dismissModal() {
+    this.viewCtrl.dismiss({
+      locationRequested: false
+    });
+  }
 }
