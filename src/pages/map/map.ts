@@ -17,12 +17,12 @@ export class MapPage implements OnInit {
   map:any;
   userMarker:any;
   events:any[];
-  eventMarkers:any[];
+  eventMarkers: Map<any, any>;
   // user: any;
 
   constructor(public navCtrl:NavController, public platform:Platform, public modalCtrl:ModalController, private eventData:EventData) {
     this.events = eventData.events;
-    this.eventMarkers = [];
+    this.eventMarkers = new Map<any, any>();
     // NativeStorage.getItem('user')
     // .then(function (data) {
     //     this.user = {
@@ -338,6 +338,27 @@ export class MapPage implements OnInit {
 
     let latLng = new google.maps.LatLng(lat, long);
 
+    switch(event.category) {
+      case 'Comedy':
+        break;
+      case 'Theater/Dance':
+        break;
+      case 'Art/Film':
+        break;
+      case 'Music':
+        break;
+      case 'Sports/Recreation':
+        break;
+      case 'Food/Drink':
+        break;
+      case 'Games':
+        break;
+      case 'Info-Session/Seminar':
+        break;
+      case 'Parties/Nightlife':
+        break;
+    }
+
     let eventMarker = new google.maps.Marker({
       position: latLng,
       map: this.map,
@@ -363,7 +384,7 @@ export class MapPage implements OnInit {
       eventDetailsModal.present();
     });
 
-    this.eventMarkers.push(eventMarker);
+    this.eventMarkers[event] = eventMarker;
   }
 
   ngOnChanges(changes:SimpleChanges) {
@@ -371,6 +392,7 @@ export class MapPage implements OnInit {
 
     if (changes['filters'] != null) {
       console.log("changed:" + changes['filters'].currentValue);
+      //changes['filters'].currentValue.indexof('Movies') 
     }
 
     if (changes['friends'] != null) {
