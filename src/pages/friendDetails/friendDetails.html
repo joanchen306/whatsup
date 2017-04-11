@@ -1,0 +1,14 @@
+<!-- <ion-header-bar>
+</ion-header-bar> -->
+
+<ion-content style="{width: 80%}">
+  <!--<h3 style="color:gainsboro">{{friend.name}}</h3>-->
+  <div id="friends-detail-container">
+  <h1 class="title" style="color:gainsboro">{{friend.name}}</h1>
+  <div>
+  <button (click)="showFriendLocation()" class="btn-blue">Request Location</button>
+  <button (click)="dismiss()" class="btn-red"> Close </button>
+  </div>
+  <h3 style="color:gainsboro">(Location will be shown as a green dot.)</h3>
+  </div>
+</ion-content>

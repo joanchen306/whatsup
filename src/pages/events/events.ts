@@ -1,26 +1,29 @@
-import { Component } from '@angular/core';
-
-import { NavController } from 'ionic-angular';
+import { Component } from "@angular/core";
+import { NavController, ModalController } from "ionic-angular";
+import { EventData } from "../../data/eventData";
+import { EventDetails } from "../eventdetails/eventdetails";
+//import {EventProvider} from '../../providers/event-provider';
 
 @Component({
   selector: 'event-list',
-  templateUrl: 'events.html'
+  templateUrl: 'events.html',
+  providers: [EventData]
 })
 export class EventsPage {
-  events: Array<{name:string, distance:number, description:string}>
-  constructor(public navCtrl: NavController) {
-    this.events = [
-      {
-        name: "Esteban's Shindig",
-        distance: 1.1,
-        description: "Come celebrate your average Thursday night with Esteban and the crew. BYOB ofc"
-      },
-      {
-        name: "Miguel's Lunar Eclipse Get-together",
-        distance: 0.8,
-        description: "Come celebrate the lunar eclipse, they don't happen very often ya know!"
-      },
-    ];
+  events:any[];
+
+
+  constructor(public navCtrl:NavController, private eventData:EventData, private modalCtrl:ModalController) {
+    this.events = eventData.events;
+  }
+
+  eventTapped(event) {
+    var eventDetailsModal = this.modalCtrl.create(EventDetails, {event: event});
+    eventDetailsModal.onDidDismiss(eventDetails => {
+      eventDetailsModal = this.modalCtrl.create(EventDetails, {event: eventDetails});
+    });
+
+   eventDetailsModal.present();
   }
 
 }

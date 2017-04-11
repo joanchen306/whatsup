@@ -1,18 +1,19 @@
 friends-list {
   .active {
-    color: green;
+    color: #2ec95c;
   }
   .inactive {
     color: red;
   }
 }
 
-ion-content { 
-  background-color: #000;
+ion-content {
+  background-color: #000000;
+  color: #fff;
   .item-md, .item-ios, .item{
-    background-color: #000 !important;
+    background-color: #000000 !important;
 
-    ion-icon { 
+    ion-icon {
       color: #fff;
     }
 
@@ -25,7 +26,7 @@ ion-content {
     background-color: #515171;
   }
 
-  .friend-dist { 
+  .friend-dist {
     color: #fff;
   }
 }

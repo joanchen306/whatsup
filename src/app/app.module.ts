@@ -1,14 +1,19 @@
-import { NgModule, ErrorHandler } from '@angular/core';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
-import { MyApp } from './app.component';
-import { EventsPage } from '../pages/events/events';
-import { FriendsPage } from '../pages/friends/friends';
-import { MapPage } from '../pages/map/map';
-import { MainPage } from '../pages/mainpage/mainpage';
-import { LoginPage } from '../pages/login/login';
+import {NgModule, ErrorHandler} from "@angular/core";
+import {IonicApp, IonicModule, IonicErrorHandler} from "ionic-angular";
+import {CloudSettings, CloudModule} from "@ionic/cloud-angular";
+import {MyApp} from "./app.component";
+import {EventsPage} from "../pages/events/events";
+import {FriendsPage} from "../pages/friends/friends";
+import {MapPage} from "../pages/map/map";
+import {MainPage} from "../pages/mainpage/mainpage";
+import {LoginPage} from "../pages/login/login";
+import {FacebookService} from "../services/facebook.service";
+import {FilterPage} from "../pages/filter/filter";
+import {FriendDetails} from "../pages/friendDetails/friendDetails";
+import {EventDetails} from "../pages/eventdetails/eventdetails";
+import {FriendDetailsMap} from "../pages/frienddetailsmap/friendDetailsMap";
 
-const cloudSettings: CloudSettings = {
+const cloudSettings:CloudSettings = {
   'core': {
     'app_id': '90d65db5'
   },
@@ -17,7 +22,7 @@ const cloudSettings: CloudSettings = {
       'scope': ['public_profile']
     }
   }
-}
+};
 
 @NgModule({
   declarations: [
@@ -27,6 +32,10 @@ const cloudSettings: CloudSettings = {
     MapPage,
     MainPage,
     LoginPage,
+    FilterPage,
+    FriendDetails,
+    FriendDetailsMap,
+    EventDetails
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -40,7 +49,13 @@ const cloudSettings: CloudSettings = {
     MapPage,
     MainPage,
     LoginPage,
+    FilterPage,
+    FriendDetails,
+    FriendDetailsMap,
+    EventDetails
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},
+    FacebookService],
 })
-export class AppModule {}
+export class AppModule {
+}

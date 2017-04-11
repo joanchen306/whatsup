@@ -1,19 +1,37 @@
 <ion-header no-border>
   <ion-toolbar id="search-toolbar">
-    <ion-title>  <ion-icon id="profile-icon" ios="ios-contact" md="md-contact"></ion-icon> WhatsUp  <ion-icon id="search-icon" ios="ios-search" md="md-search"></ion-icon> </ion-title>
+    <ion-title>
+      <ion-icon id="profile-icon" ios="ios-contact" md="md-contact"></ion-icon>
+      NowWhat
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
   <ion-slides initialSlide="1" (ionSlideDidChange)="onSlideDidChange()">
     <ion-slide>
-      <friends-list></friends-list>
+      <friends-list [userId]="userId" (friendsRequested)="handleFriendRequested($event)"
+                    [filters]="filters"></friends-list>
     </ion-slide>
     <ion-slide>
       <div>
         <div #swipeRightWrap class="swipe right" (swiperight)="goToSlide(FRIENDS_SLIDE_INDEX)"></div>
         <div #swipeLeftWrap class="swipe left" (swipeleft)="goToSlide(EVENTS_LIST_SLIDE_INDEX)"></div>
-        <map-page></map-page>
+        <map-page [filters]="filters" [friends]="friendsSharingLocation"></map-page>
+        <div #swipeUpWrap class="swipeup" (click)="launchEventFilterModal()">
+          <div>
+            Filters:
+          <ion-icon *ngIf="isSelected('Comedy')" class="mainpage-icon" ios="ios-happy" md="md-happy"></ion-icon>
+          <ion-icon *ngIf="isSelected('Theater/Dance')" class="mainpage-icon" ios="ios-star-outline" md="md-star-outline"></ion-icon>
+          <ion-icon *ngIf="isSelected('Art/Film')" class="mainpage-icon" ios="ios-film" md="md-film"></ion-icon>
+          <ion-icon *ngIf="isSelected('Music')" class="mainpage-icon" ios="ios-musical-notes" md="md-musical-notes"></ion-icon>
+          <ion-icon *ngIf="isSelected('Sports/Recreation')" class="mainpage-icon" ios="ios-basketball" md="md-basketball"></ion-icon>
+          <ion-icon *ngIf="isSelected('Food/Drink')" class="mainpage-icon" ios="ios-pizza" md="md-pizza"></ion-icon>
+          <ion-icon *ngIf="isSelected('Games')" class="mainpage-icon" ios="ios-game-controller-b" md="md-game-controller-b"></ion-icon>
+          <ion-icon *ngIf="isSelected('Info-Session/Seminar')" class="mainpage-icon" ios="ios-information-circle" md="md-information-circle"></ion-icon>
+          <ion-icon *ngIf="isSelected('Parties/Nightlife')" class="mainpage-icon" ios="ios-wine" md="md-wine"></ion-icon>
+          </div>
+        </div>
       </div>
     </ion-slide>
     <ion-slide>
