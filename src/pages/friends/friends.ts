@@ -12,21 +12,23 @@ export class FriendsPage {
   friends:any[];
   @Input() filters:any[];
   @Input() userId:string;
-  @Output() friendsRequested: EventEmitter<any> = new EventEmitter<string>();
+  @Output() friendsRequested:EventEmitter<any> = new EventEmitter<string>();
 
   constructor(public navCtrl:NavController, public navParams:NavParams, private friendData:FriendData, private modalCtrl:ModalController) {
     this.friends = friendData.friends;
   }
 
   friendTapped(friend) {
-    let friendDetailsModal = this.modalCtrl.create(FriendDetails, friend);
-    friendDetailsModal.onDidDismiss(data => {
-      // TODO:
-      if (data.locationRequested != null && data.locationRequested) {
-        // TODO: Show location
-        this.friendsRequested.emit(data.friend);
-      }
-    });
-    friendDetailsModal.present();
+    if (friend.available) {
+      let friendDetailsModal = this.modalCtrl.create(FriendDetails, friend);
+      friendDetailsModal.onDidDismiss(data => {
+        // TODO:
+        if (data.locationRequested != null && data.locationRequested) {
+          // TODO: Show location
+          this.friendsRequested.emit(data.friend);
+        }
+      });
+      friendDetailsModal.present();
+    }
   }
 }

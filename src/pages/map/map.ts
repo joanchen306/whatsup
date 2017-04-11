@@ -2,6 +2,7 @@ import {Component, ViewChild, OnInit, Input, SimpleChanges} from "@angular/core"
 import {NavController, Platform, ModalController} from "ionic-angular";
 import {EventDetails} from "../eventdetails/eventdetails";
 import {EventData} from "../../data/eventData";
+import {FriendDetailsMap} from "../frienddetailsmap/friendDetailsMap";
 
 declare var google;
 
@@ -17,7 +18,8 @@ export class MapPage implements OnInit {
   map:any;
   userMarker:any;
   events:any[];
-  eventMarkers: Map<any, any>;
+  eventMarkers:Map<any, any>;
+  friendMarkers:Map<any, any>;
   // user: any;
 
   constructor(public navCtrl:NavController, public platform:Platform, public modalCtrl:ModalController, private eventData:EventData) {
@@ -338,7 +340,7 @@ export class MapPage implements OnInit {
 
     let latLng = new google.maps.LatLng(lat, long);
 
-    switch(event.category) {
+    switch (event.category) {
       case 'Comedy':
         break;
       case 'Theater/Dance':
@@ -392,7 +394,7 @@ export class MapPage implements OnInit {
 
     if (changes['filters'] != null) {
       console.log("changed:" + changes['filters'].currentValue);
-      //changes['filters'].currentValue.indexof('Movies') 
+      //changes['filters'].currentValue.indexof('Movies')
     }
 
     if (changes['friends'] != null) {
@@ -421,5 +423,16 @@ export class MapPage implements OnInit {
     });
 
     friendMarker.setMap(this.map);
+
+    var friendDetailsModal = this.modalCtrl.create(FriendDetailsMap, friend);
+    friendDetailsModal.onDidDismiss(friendDetails => {
+      friendDetailsModal = this.modalCtrl.create(FriendDetailsMap, friendDetails);
+    });
+
+    friendMarker.addListener('click', function () {
+      friendDetailsModal.present();
+    });
+
+    this.friendMarkers[friend] = friendMarker;
   }
 }

@@ -11,6 +11,7 @@ import {FacebookService} from "../services/facebook.service";
 import {FilterPage} from "../pages/filter/filter";
 import {FriendDetails} from "../pages/friendDetails/friendDetails";
 import {EventDetails} from "../pages/eventdetails/eventdetails";
+import {FriendDetailsMap} from "../pages/frienddetailsmap/friendDetailsMap";
 
 const cloudSettings:CloudSettings = {
   'core': {
@@ -33,6 +34,7 @@ const cloudSettings:CloudSettings = {
     LoginPage,
     FilterPage,
     FriendDetails,
+    FriendDetailsMap,
     EventDetails
   ],
   imports: [
@@ -49,6 +51,7 @@ const cloudSettings:CloudSettings = {
     LoginPage,
     FilterPage,
     FriendDetails,
+    FriendDetailsMap,
     EventDetails
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},
