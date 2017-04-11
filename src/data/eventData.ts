@@ -2,7 +2,7 @@ export class EventData {
   public events = [
     {
       name: 'Cypress $2 Craft Beer Night',
-      category: 'Art/Film',
+      category: 'Food/Drink',
       start: "6:00pm",
       end: "12:00pm",
       promoter: "Cypress Street Pint & Plate",
