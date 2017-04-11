@@ -403,7 +403,14 @@ export class MapPage implements OnInit {
     let eventMarker = new google.maps.Marker({
       position: latLng,
       map: this.map,
-      icon: icons[event.category].icon,
+      icon: {
+         path: google.maps.SymbolPath.CIRCLE,		
+         scale: 10,		
+         fillOpacity: 1,		
+         strokeWeight: 2,		
+         fillColor: '#ff0000',		
+         strokeColor: '#fff'		
+       },
       title: event.name,
     });
 
