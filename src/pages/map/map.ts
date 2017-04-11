@@ -344,8 +344,10 @@ export class MapPage implements OnInit {
 
     let latLng = new google.maps.LatLng(lat, long);
 
+    var iconBase = "../assets/icon/"
+
     switch (event.category) {
-      case 'Comedy':
+      case 'Comedy':  
         break;
       case 'Theater/Dance':
         break;
@@ -359,23 +361,49 @@ export class MapPage implements OnInit {
         break;
       case 'Games':
         break;
-      case 'Info-Session/Seminar':
+      case 'Info-session/Seminar':
         break;
       case 'Parties/Nightlife':
         break;
     }
 
+    var icons = {
+          'Comedy': {
+            icon: iconBase + 'comedy.png'
+          },
+          'Theater/Dance': {
+            icon: iconBase + 'theatre.png'
+          },
+          'Art/Film': {
+            icon: iconBase + 'film.png'
+          },
+          'Music': {
+            icon: iconBase + 'music.png'
+          },
+          'Sports/Recreation': {
+            icon: iconBase + 'sports.png'
+          },
+          'Food/Drink': {
+            icon: iconBase + 'food.png'
+          },
+          'Games': {
+            icon: iconBase + 'games.png'
+          },
+          'Info-session/Seminar': {
+            icon: iconBase + 'info.png'
+          },
+          'Parties/Nightlife': {
+            icon: iconBase + 'party.png'
+          }
+        };
+
+    console.log(event);
+    console.log(icons[event.category]);
+
     let eventMarker = new google.maps.Marker({
       position: latLng,
       map: this.map,
-      icon: {
-        path: google.maps.SymbolPath.CIRCLE,
-        scale: 10,
-        fillOpacity: 1,
-        strokeWeight: 2,
-        fillColor: '#ff0000',
-        strokeColor: '#fff'
-      },
+      icon: icons[event.category].icon,
       title: event.name,
     });
 
