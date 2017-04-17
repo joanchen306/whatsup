@@ -2,11 +2,13 @@ import {Component, ViewChild} from "@angular/core";
 import {NavController, Slides, NavParams, ModalController} from "ionic-angular";
 import {FacebookService} from "../../services/facebook.service";
 import {FilterPage} from "../filter/filter";
+import {EventProvider} from '../../providers/event-provider';
+
 
 @Component({
   selector: 'main-page',
   templateUrl: 'mainpage.html',
-  providers: [FacebookService]
+  providers: [FacebookService, EventProvider]
 })
 export class MainPage {
   data:any;
@@ -29,10 +31,12 @@ export class MainPage {
   MAP_SLIDE_INDEX:number = 1;
   EVENTS_LIST_SLIDE_INDEX:number = 2;
 
-  constructor(public navParams:NavParams, public navCtrl:NavController, public facebookService:FacebookService, public modalCtrl:ModalController) {
+  constructor(public navParams:NavParams, public navCtrl:NavController,
+     public facebookService:FacebookService, public modalCtrl:ModalController, private eventProvider:EventProvider) {
     this.userId = navParams.data;
     this.navCtrl = navCtrl;
     this.modalCtrl = modalCtrl;
+    this.eventProvider = eventProvider;
   }
 
   goToSlide(slideIndex) {
@@ -47,6 +51,7 @@ export class MainPage {
     } else {
       this.slides.lockSwipes(false);
     }
+    this.eventProvider.getJsonData();
   }
 
   // launchEventFilterModal() {

@@ -12,6 +12,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class EventProvider {
 
+  events = {};
   constructor(public http: Http) {
     console.log("Event Provider")
   }
@@ -19,11 +20,22 @@ export class EventProvider {
 
 
     return this.http.get('https://www.eventbriteapi.com/v3/events/search/?location.address=Atlanta&expand=organizer,venue&token=VMGQGYQUIO3IKNS75BD4')
-         .map(res => {
-               let body = res.json();
-               return body.events || { };
+         .map((res) => {
+           console.log(res.json());
+           return res.json();
 
-           });
+         }).map((res) => {
+           console.log(res.events);
+           var events = [];
+           res.events.forEach((ev) => {events.push({
+             'name':ev.name.text,
+             'desc':ev.description.text,
+             'lat':ev.venue.latitude,
+             'lon':ev.venue.longitude,
+             'start':ev.start.local
+           })
+         });
+        return events});
 
   }
     //console.log('Hello EventProvider Provider');

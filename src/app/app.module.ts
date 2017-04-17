@@ -8,6 +8,8 @@ import {MapPage} from "../pages/map/map";
 import {MainPage} from "../pages/mainpage/mainpage";
 import {LoginPage} from "../pages/login/login";
 import {FacebookService} from "../services/facebook.service";
+import {EventProvider} from "../providers/event-provider";
+
 import {FilterPage} from "../pages/filter/filter";
 import {FriendDetails} from "../pages/friendDetails/friendDetails";
 import {EventDetails} from "../pages/eventdetails/eventdetails";
@@ -55,7 +57,7 @@ const cloudSettings:CloudSettings = {
     EventDetails
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},
-    FacebookService],
+    FacebookService, EventProvider],
 })
 export class AppModule {
 }
