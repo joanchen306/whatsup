@@ -32,7 +32,10 @@ export class EventProvider {
              'desc':ev.description.text,
              'lat':ev.venue.latitude,
              'lon':ev.venue.longitude,
-             'start':ev.start.local
+             'address':ev.venue.address.localized_address_display,
+             'start':ev.start.local,
+             'end':ev.end.local
+
            })
          });
         return events});

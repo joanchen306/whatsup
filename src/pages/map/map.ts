@@ -14,17 +14,17 @@ declare var google;
 export class MapPage implements OnInit {
   @Input() filters:Array<string> = [];
   @Input() friends:Array<any> = [];
+  @Input() events:Array<any> = [];
   @ViewChild('map') mapElement;
   map:any;
   userMarker:any;
-  events:any[];
   eventMarkers:Map<any, any>;
   friendMarkers = {};
   mapLoaded: Boolean = false;
   // user: any;
 
   constructor(public navCtrl:NavController, public platform:Platform, public modalCtrl:ModalController, private eventData:EventData) {
-    this.events = eventData.events;
+    // this.events = eventData.events;
     this.eventMarkers = new Map<any, any>();
 
     // NativeStorage.getItem('user')
@@ -339,33 +339,33 @@ export class MapPage implements OnInit {
   }
 
   createEventMarker(event) {
-    let lat = event.latitude;
-    let long = event.longitude;
+    let lat = event.lat;
+    let long = event.lon;
 
     let latLng = new google.maps.LatLng(lat, long);
 
     var iconBase = "../assets/icon/"
 
-    switch (event.category) {
-      case 'Comedy':  
-        break;
-      case 'Theater/Dance':
-        break;
-      case 'Art/Film':
-        break;
-      case 'Music':
-        break;
-      case 'Sports/Recreation':
-        break;
-      case 'Food/Drink':
-        break;
-      case 'Games':
-        break;
-      case 'Info-session/Seminar':
-        break;
-      case 'Parties/Nightlife':
-        break;
-    }
+    // switch (event.category) {
+    //   case 'Comedy':
+    //     break;
+    //   case 'Theater/Dance':
+    //     break;
+    //   case 'Art/Film':
+    //     break;
+    //   case 'Music':
+    //     break;
+    //   case 'Sports/Recreation':
+    //     break;
+    //   case 'Food/Drink':
+    //     break;
+    //   case 'Games':
+    //     break;
+    //   case 'Info-session/Seminar':
+    //     break;
+    //   case 'Parties/Nightlife':
+    //     break;
+    // }
 
     var icons = {
           'Comedy': {
@@ -397,19 +397,19 @@ export class MapPage implements OnInit {
           }
         };
 
-    console.log(event);
-    console.log(icons[event.category]);
+    // console.log(event);
+    // console.log(icons[event.category]);
 
     let eventMarker = new google.maps.Marker({
       position: latLng,
       map: this.map,
       icon: {
-         path: google.maps.SymbolPath.CIRCLE,		
-         scale: 10,		
-         fillOpacity: 1,		
-         strokeWeight: 2,		
-         fillColor: '#ff0000',		
-         strokeColor: '#fff'		
+         path: google.maps.SymbolPath.CIRCLE,
+         scale: 10,
+         fillOpacity: 1,
+         strokeWeight: 2,
+         fillColor: '#ff0000',
+         strokeColor: '#fff'
        },
       title: event.name,
     });
@@ -460,6 +460,12 @@ export class MapPage implements OnInit {
           }
         }
       }
+      if (changes['events'] != null || typeof changes['events'] != 'undefined') {
+        for (let event of this.events) {
+          this.createEventMarker(event);
+        }
+      }
+
     }
 
     if (changes['friends'] != null) {

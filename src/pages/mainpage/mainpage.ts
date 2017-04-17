@@ -25,6 +25,7 @@ export class MainPage {
     'Info-Session/Seminar',
     'Parties/Nightlife'
   ];
+  events = [];
   @ViewChild(Slides) slides:Slides;
 
   FRIENDS_SLIDE_INDEX:number = 0;
@@ -36,7 +37,10 @@ export class MainPage {
     this.userId = navParams.data;
     this.navCtrl = navCtrl;
     this.modalCtrl = modalCtrl;
-    this.eventProvider = eventProvider;
+    eventProvider.getJsonData().subscribe((res)=>{
+      console.log(res);
+      this.events = res;
+    });
   }
 
   goToSlide(slideIndex) {
@@ -72,6 +76,11 @@ export class MainPage {
     this.friendsSharingLocation = friend;
     this.goToSlide(1);
   }
+  handleEventsUpdate(events) {
+    console.log("events"+events);
+    // this.events = events;
+  }
+
 
   isSelected(filter) {
     return (this.filters.indexOf(filter) != -1);
