@@ -67,7 +67,7 @@ export class FilterPage {
     this.viewCtrl.dismiss();
   }
 
-  dismiss() {
+  confirm() {
     this.viewCtrl.dismiss({
       filters: this.selectedFilters
     });
