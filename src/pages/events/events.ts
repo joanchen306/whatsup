@@ -2,7 +2,7 @@ import { Component, Output, EventEmitter, Input } from "@angular/core";
 import { NavController, ModalController } from "ionic-angular";
 import { EventData } from "../../data/eventData";
 import { EventDetails } from "../eventdetails/eventdetails";
-import {EventProvider} from '../../providers/event-provider';
+import { EventProvider } from '../../providers/event-provider';
 
 @Component({
   selector: 'event-list',
