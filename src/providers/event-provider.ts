@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import {NativeStorage} from "ionic-native";
 import 'rxjs/add/operator/map';
+import {calcCrow} from "../services/getDistance"
 
 /*
   Generated class for the EventProvider provider.
@@ -29,13 +30,13 @@ export class EventProvider {
            var events = [];
            res.events.forEach((ev) => {events.push({
              'name':ev.name.text,
-             'desc':ev.description.text,
+             'description':ev.description.text,
              'lat':ev.venue.latitude,
              'lon':ev.venue.longitude,
              'address':ev.venue.address.localized_address_display,
              'start':ev.start.local,
-             'end':ev.end.local
-
+             'end':ev.end.local,
+             'distance':calcCrow(ev.venue.latitude,ev.venue.longitude, 33.7818079,-84.3973634)
            })
          });
         return events});

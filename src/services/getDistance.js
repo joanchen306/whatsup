@@ -1,4 +1,4 @@
-function calcCrow(lat1, lon1, lat2, lon2)
+export function calcCrow(lat1, lon1, lat2, lon2)
 {
   var R = 3959; // mi
   var dLat = toRad(lat2-lat1);

@@ -3,7 +3,8 @@
     <h1>{{event.name}}</h1>
     <h3 class="grey">{{event.category}}</h3>
     <div id="info-div">
-        <h3>{{event.start}} - {{event.end}}</h3>
+        <h3>{{eventStart | date: 'MM/dd/yyyy'}}</h3>
+        <h3>{{eventStart | date: 'jm'}} - {{eventEnd | date: 'jm'}}</h3>
         <h3>{{event.address}}</h3>
         <h3>{{event.promoter}}</h3>
     </div>

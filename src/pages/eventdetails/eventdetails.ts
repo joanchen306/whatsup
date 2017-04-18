@@ -1,5 +1,5 @@
-import {NavController, NavParams, ViewController} from "ionic-angular";
-import {Component} from "@angular/core";
+import { NavController, NavParams, ViewController } from "ionic-angular";
+import { Component } from "@angular/core";
 
 @Component({
   selector: 'eventdetails-page',
@@ -8,14 +8,15 @@ import {Component} from "@angular/core";
 export class EventDetails {
   userId:any;
   event:any;
+  eventStart: Date;
+  eventEnd: Date;
 
   constructor(public navParams:NavParams, public navCtrl:NavController, public viewCtrl:ViewController) {
     this.userId = navParams.data;
     this.viewCtrl = viewCtrl;
     this.event = navParams.get('event');
-    console.log(this.event);
-    //ng-on-change to detect filter change
-    // then if filter change, update markers
+    this.eventStart = new Date(this.event.start);
+    this.eventEnd = new Date(this.event.end);
   }
 
   dismiss() {
