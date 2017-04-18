@@ -30,7 +30,6 @@ export class EventProvider {
            var events = [];
            res.events.forEach((ev) => {events.push({
              'name':ev.name.text,
-             //'category':categorize(ev.category_id),
              'description':ev.description.text,
              'lat':ev.venue.latitude,
              'lon':ev.venue.longitude,
@@ -38,7 +37,7 @@ export class EventProvider {
              'start':ev.start.local,
              'end':ev.end.local,
              'distance':calcCrow(ev.venue.latitude,ev.venue.longitude, 33.7818079,-84.3973634),
-
+             'category':categorize(ev.category_id),
            })
          });
         return events});
