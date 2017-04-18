@@ -3,6 +3,7 @@ import {Http} from "@angular/http";
 import {Facebook, NativeStorage} from "ionic-native";
 import "rxjs/add/operator/map";
 
+
 /*
  Generated class for the FriendProvider provider.
 
