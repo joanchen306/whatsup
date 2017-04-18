@@ -62,7 +62,7 @@ export class MainPage {
   //   this.navCtrl.push(FilterPage)
   // }
   launchEventFilterModal() {
-    let eventFilterModal = this.modalCtrl.create(FilterPage);
+    let eventFilterModal = this.modalCtrl.create(FilterPage, {'filters': this.filters});
     eventFilterModal.onDidDismiss(data => {
       if (data != null){
         this.filters = data.filters;

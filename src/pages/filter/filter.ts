@@ -30,6 +30,7 @@ export class FilterPage {
   constructor(public navParams:NavParams, public navCtrl:NavController, public viewCtrl:ViewController) {
     this.userId = navParams.data;
     this.viewCtrl = viewCtrl;
+    this.selectedFilters = this.navParams.get('filters');
   }
 
   goToSlide(slideIndex) {
