@@ -3,7 +3,8 @@ import {NavController, Slides, NavParams, ModalController} from "ionic-angular";
 import {FacebookService} from "../../services/facebook.service";
 import {FilterPage} from "../filter/filter";
 import {EventProvider} from '../../providers/event-provider';
-import {calcCrow} from "../../services/getDistance"
+import {calcCrow} from "../../services/getDistance";
+import {categorize} from "../../services/getCategory"
 
 @Component({
   selector: 'main-page',
