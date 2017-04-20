@@ -369,7 +369,7 @@ export class MapPage implements OnInit {
 
     var icons = {
           'Comedy': {
-            icon: iconBase + 'comedy.png' //blue/green #009A9A
+            icon: 'https://lh6.googleusercontent.com/oCYEqOozQCXcS8dg8T1sAbzSEcndneOz-5nElxfwgRd53hwGxto9l9dxnnBF2-VYmPv0OnOkCwp3PGI=w2556-h1398' //blue/green #009A9A
           },
           'Theater/Dance': {
             icon: iconBase + 'theatre.png' //pink #A90067
@@ -378,7 +378,7 @@ export class MapPage implements OnInit {
             icon: iconBase + 'film.png' //black #000000
           },
           'Music': {
-            icon: iconBase + 'music.png' //red #C00000
+            icon: 'https://lh5.googleusercontent.com/fWBVYC6FsqKtERCk9emy41q4M0O6RLIayV7DIWwFFCXWkJg5F5_htK-16iyJ7W7Gdtjb7Jna7moKCbw=w2556-h1398' //red #C00000
           },
           'Sports/Recreation': {
             icon: iconBase + 'sports.png' //orange #F57A1C
