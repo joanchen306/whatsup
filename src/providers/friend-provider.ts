@@ -18,14 +18,13 @@ export class FriendProvider {
       .map((response) => {
         var friends = [];
         response.data.forEach((friend) => {
-          var rand =
-            friends.push({
-              'name': friend.name,
-              'id': friend.id,
-              'lat': 33.78130,
-              'lng': -84.402112,
-              'available': true,
-            });
+          friends.push({
+            'name': friend.name,
+            'id': friend.id,
+            'lat': 33.78130,
+            'lng': -84.402112,
+            'available': true,
+          });
         });
         return friends;
       });
