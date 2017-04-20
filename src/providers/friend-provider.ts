@@ -1,47 +1,32 @@
 import {Injectable} from "@angular/core";
-import {Http} from "@angular/http";
-import {Facebook, NativeStorage} from "ionic-native";
 import "rxjs/add/operator/map";
+import {Facebook} from "ionic-native/dist/es5/index";
+import {Observable} from "rxjs/Rx";
 
-
-/*
- Generated class for the FriendProvider provider.
-
- See https://angular.io/docs/ts/latest/guide/dependency-injection.html
- for more info on providers and Angular 2 DI.
- */
 @Injectable()
 export class FriendProvider {
-  data:any;
-  friends:any;
+  friends = {};
 
-  constructor(public http:Http) {
-    this.data = null;
+  constructor() {
   }
 
-  public getAllFriends() {
-    var user = {id: "", name: "", gender: "", picture: ""};
-    this.friends = [];
-
-    // NativeStorage.getItem('user')
-    //   .then(function (data) {
-    //     alert("data: " + JSON.stringify(data));
-    //
-    //     user = {
-    //       id: data.id,
-    //       name: data.name,
-    //       gender: data.gender,
-    //       picture: data.picture
-    //     };
-    //       //
-    //       // if (user != null) {
-    //       //   Facebook.api("/" + user.id + "/friends", function(response) {
-    //       //     console.log(response);
-    //       //
-    //       //   });
-    //       // }
-    //
-    //   });
-    return [];
+  public getFriendJSON(userId:string) {
+    return Observable.fromPromise(Facebook.api("/" + userId + "/friends", []))
+      .map((response) => {
+        return response;
+      })
+      .map((response) => {
+        var friends = [];
+        response.data.forEach((friend) => {
+          friends.push({
+            'name': friend.name,
+            'id': friend.id,
+            'lat': 33.78130,
+            'lng': -84.402112,
+            'available': true,
+          });
+        });
+        return friends;
+      });
   }
 }

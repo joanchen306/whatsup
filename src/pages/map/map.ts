@@ -473,7 +473,7 @@ export class MapPage implements OnInit {
   }
 
   showFriendMarker(friend) {
-    var latLng = new google.maps.LatLng(friend.latitude, friend.longitude);
+    var latLng = new google.maps.LatLng(friend.lat, friend.lng);
     let friendMarker = new google.maps.Marker({
       position: latLng,
       map: this.map,

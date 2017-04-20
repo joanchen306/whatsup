@@ -10,8 +10,8 @@
 <ion-content padding>
   <ion-slides initialSlide="1" (ionSlideDidChange)="onSlideDidChange()">
     <ion-slide>
-      <friends-list [userId]="userId" (friendsRequested)="handleFriendRequested($event)"
-                    [filters]="filters"></friends-list>
+      <friends-list (friendsRequested)="handleFriendRequested($event)"
+                    [friends]="friends"></friends-list>
     </ion-slide>
     <ion-slide>
       <div>
