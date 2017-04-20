@@ -9,13 +9,11 @@ import {FriendDetails} from "../friendDetails/friendDetails";
   providers: [FriendData]
 })
 export class FriendsPage {
-  friends:any[];
-  @Input() filters:any[];
-  @Input() userId:string;
+  @Input() friends:any[];
   @Output() friendsRequested:EventEmitter<any> = new EventEmitter<string>();
 
   constructor(public navCtrl:NavController, public navParams:NavParams, private friendData:FriendData, private modalCtrl:ModalController) {
-    this.friends = friendData.friends;
+    //this.friends = friendData.friends;
   }
 
   friendTapped(friend) {

@@ -5,11 +5,12 @@ import {FilterPage} from "../filter/filter";
 import {EventProvider} from '../../providers/event-provider';
 import {calcCrow} from "../../services/getDistance";
 import {categorize} from "../../services/getCategory"
+import {FriendProvider} from "../../providers/friend-provider";
 
 @Component({
   selector: 'main-page',
   templateUrl: 'mainpage.html',
-  providers: [FacebookService, EventProvider]
+  providers: [FacebookService, EventProvider, FriendProvider]
 })
 export class MainPage {
   data:any;
@@ -27,6 +28,7 @@ export class MainPage {
     'Parties/Nightlife'
   ];
   events = [];
+  friends = [];
   @ViewChild(Slides) slides:Slides;
 
   FRIENDS_SLIDE_INDEX:number = 0;
@@ -34,13 +36,17 @@ export class MainPage {
   EVENTS_LIST_SLIDE_INDEX:number = 2;
 
   constructor(public navParams:NavParams, public navCtrl:NavController,
-     public facebookService:FacebookService, public modalCtrl:ModalController, private eventProvider:EventProvider) {
+              public facebookService:FacebookService, public modalCtrl:ModalController,
+              private eventProvider:EventProvider, private friendProvider:FriendProvider) {
     this.userId = navParams.data;
     this.navCtrl = navCtrl;
     this.modalCtrl = modalCtrl;
-    eventProvider.getJsonData().subscribe((res)=>{
+    eventProvider.getJsonData().subscribe((res)=> {
       console.log(res);
       this.events = res;
+    });
+    friendProvider.getFriendJSON(this.userId).subscribe((res) => {
+      this.friends = res;
     });
   }
 
@@ -65,7 +71,7 @@ export class MainPage {
   launchEventFilterModal() {
     let eventFilterModal = this.modalCtrl.create(FilterPage, {'filters': this.filters});
     eventFilterModal.onDidDismiss(data => {
-      if (data != null){
+      if (data != null) {
         this.filters = data.filters;
         console.log(data);
       }
@@ -75,12 +81,13 @@ export class MainPage {
 
   handleFriendRequested(friend) {
     //TODO handle friend request
-    console.log("event heard:"+JSON.stringify(friend))
+    console.log("event heard:" + JSON.stringify(friend))
     this.friendsSharingLocation = friend;
     this.goToSlide(1);
   }
+
   handleEventsUpdate(events) {
-    console.log("events"+events);
+    console.log("events" + events);
     // this.events = events;
   }
 

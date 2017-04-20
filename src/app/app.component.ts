@@ -1,6 +1,6 @@
 import {Component, ViewChild} from "@angular/core";
 import {Nav, Platform} from "ionic-angular";
-import {StatusBar, Splashscreen, NativeStorage} from "ionic-native";
+import {StatusBar, Splashscreen, NativeStorage, Facebook} from "ionic-native";
 import {EventsPage} from "../pages/events/events";
 import {FriendsPage} from "../pages/friends/friends";
 import {MapPage} from "../pages/map/map";
@@ -39,17 +39,22 @@ export class MyApp {
     this.platform.ready().then(() => {
       // // Okay, so the platform is ready and our plugins are available.
       // // Here you can do any higher level native things you might need.
-      // let env = this;
-      // NativeStorage.getItem('user')
-      //   .then(function (data) {
-      //     //User was previously logged in
-      //     // TODO: Trigger Facebook login refresh
-      //     env.nav.push(MainPage, data.id);
-      //     Splashscreen.hide();
-      //   }, function (error) {
-      //     //User data not found locally
-      //     Splashscreen.hide();
-      //   });
+      let env = this;
+      NativeStorage.getItem('user')
+        .then(function (data) {
+          //User was previously logged in
+          // TODO: Trigger Facebook login refresh
+          Facebook.login(permissions)
+            .then(function (response) {
+              env.nav.push(MainPage, response.authResponse.userID);
+              Splashscreen.hide();
+            });
+
+        }, function (error) {
+          //User data not found locally
+          env.nav.push(LoginPage);
+          Splashscreen.hide();
+        });
       Splashscreen.hide();
 
       StatusBar.styleDefault();

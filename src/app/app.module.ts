@@ -14,6 +14,7 @@ import {FilterPage} from "../pages/filter/filter";
 import {FriendDetails} from "../pages/friendDetails/friendDetails";
 import {EventDetails} from "../pages/eventdetails/eventdetails";
 import {FriendDetailsMap} from "../pages/frienddetailsmap/friendDetailsMap";
+import {FriendProvider} from "../providers/friend-provider";
 
 const cloudSettings:CloudSettings = {
   'core': {
@@ -37,7 +38,7 @@ const cloudSettings:CloudSettings = {
     FilterPage,
     FriendDetails,
     FriendDetailsMap,
-    EventDetails
+    EventDetails,
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -57,7 +58,7 @@ const cloudSettings:CloudSettings = {
     EventDetails
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},
-    FacebookService, EventProvider],
+    FacebookService, EventProvider, FriendProvider],
 })
 export class AppModule {
 }
