@@ -369,48 +369,41 @@ export class MapPage implements OnInit {
 
     var icons = {
           'Comedy': {
-            icon: iconBase + 'comedy.png'
+            icon: iconBase + 'comedy.png' //blue/green #009A9A
           },
           'Theater/Dance': {
-            icon: iconBase + 'theatre.png'
+            icon: iconBase + 'theatre.png' //pink #A90067
           },
           'Art/Film': {
-            icon: iconBase + 'film.png'
+            icon: iconBase + 'film.png' //black #000000
           },
           'Music': {
-            icon: iconBase + 'music.png'
+            icon: iconBase + 'music.png' //red #C00000
           },
           'Sports/Recreation': {
-            icon: iconBase + 'sports.png'
+            icon: iconBase + 'sports.png' //orange #F57A1C
           },
           'Food/Drink': {
-            icon: iconBase + 'food.png'
+            icon: iconBase + 'food.png' //green  #67A900
           },
           'Games': {
-            icon: iconBase + 'games.png'
+            icon: iconBase + 'games.png'  //yellow #F5E71C
           },
-          'Info-session/Seminar': {
-            icon: iconBase + 'info.png'
+          'Info-Session/Seminar': {
+            icon: iconBase + 'info.png'  //blue  #0096F6
           },
           'Parties/Nightlife': {
-            icon: iconBase + 'party.png'
+            icon: iconBase + 'party.png'  //purple  #710AAE
           }
         };
 
-    // console.log(event);
-    // console.log(icons[event.category]);
+     console.log(event);
+     console.log(event.category_id);
 
     let eventMarker = new google.maps.Marker({
       position: latLng,
       map: this.map,
-      icon: {
-         path: google.maps.SymbolPath.CIRCLE,
-         scale: 10,
-         fillOpacity: 1,
-         strokeWeight: 2,
-         fillColor: '#ff0000',
-         strokeColor: '#fff'
-       },
+      icon: icons[event.category].icon,
       title: event.name,
     });
 
