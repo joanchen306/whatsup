@@ -369,31 +369,31 @@ export class MapPage implements OnInit {
 
     var icons = {
           'Comedy': {
-            icon: 'https://lh6.googleusercontent.com/oCYEqOozQCXcS8dg8T1sAbzSEcndneOz-5nElxfwgRd53hwGxto9l9dxnnBF2-VYmPv0OnOkCwp3PGI=w2556-h1398' //blue/green #009A9A
+            icon: iconBase + 'comedy.png' //blue/green #009A9A
           },
           'Theater/Dance': {
-            icon: 'https://lh5.googleusercontent.com/-VkTjW2on55-99Rj-8VhsleHAxk87uERZ-G2mH1pmHtG7eFTkbuTtPoB9Vu2_x3PyuUSPwXUDia9KHA=w2556-h1398' //pink #A90067
+            icon: iconBase + 'theatre.png' //pink #A90067
           },
           'Art/Film': {
-            icon: 'https://lh5.googleusercontent.com/5ruRNMWkNW8YAa8ze9LXTM5wRd96FZR6Fp790AyugwXa0sSPSSrpEzEJ-wH788wG0h3bccscE4ip91Q=w2556-h1398' //black #000000
+            icon: iconBase + 'film.png' //black #000000
           },
           'Music': {
-            icon: 'https://lh5.googleusercontent.com/fWBVYC6FsqKtERCk9emy41q4M0O6RLIayV7DIWwFFCXWkJg5F5_htK-16iyJ7W7Gdtjb7Jna7moKCbw=w2556-h1398' //red #C00000
+            icon: iconBase + 'music.png' //red #C00000
           },
           'Sports/Recreation': {
-            icon: 'https://lh6.googleusercontent.com/M4OWlJUNU6GKWAAuvPHvase2SJcx1lL7sD0lOxRWSFJ833BdzoWlrcKZhC0JFGvFbf7pG6ICmUCh7yc=w2556-h1398' //orange #F57A1C
+            icon: iconBase + 'sports.png' //orange #F57A1C
           },
           'Food/Drink': {
-            icon: 'https://lh4.googleusercontent.com/tQ0yCi8xBFBB7tOSVK-rq45Cl1Ld1zwXwq3cgKKFyqwA9nUDcrvO93-v6eGNUkAPjPG4fjHSJtZrcWI=w2556-h1398' //green  #67A900
+            icon: iconBase + 'food.png' //green  #67A900
           },
           'Games': {
-            icon: 'https://lh3.googleusercontent.com/DouWISMDz692c4GtEU6FOTgBW4fgxrI61tSJxfD6LfRupzZ2Y3nCiDTg0x8GY1g7ckH6amBYbIQqNnA=w2556-h1398' //yellow #F5E71C
+            icon: iconBase + 'games.png'  //yellow #F5E71C
           },
           'Info-Session/Seminar': {
-            icon: 'https://lh3.googleusercontent.com/2jkJ5o5GtC8k6Rrz8m--itO0JXNGYsfVEJjgfPqYPG1h7RnZXO-utfWkQeGPk3TR1D_-w5MRzzHd_LI=w2556-h1398'  //blue  #0096F6
+            icon: iconBase + 'info.png'  //blue  #0096F6
           },
           'Parties/Nightlife': {
-            icon: 'https://lh3.googleusercontent.com/bENJsMwIGVUHePcuty3ua5PjtWXnc2E3nlpsu7SlMLkye_8CpLqZ1avJ_Oz7R7jM_JMKS9ppBRRUqFc=w2556-h1398'  //purple  #710AAE
+            icon: iconBase + 'party.png'  //purple  #710AAE
           }
         };
 
@@ -403,7 +403,14 @@ export class MapPage implements OnInit {
     let eventMarker = new google.maps.Marker({
       position: latLng,
       map: this.map,
-      icon: icons[event.category].icon,
+      icon: {
+          path: google.maps.SymbolPath.CIRCLE,		
+          scale: 10,		
+          fillOpacity: 1,		
+          strokeWeight: 2,		
+          fillColor: '#ff0000',		
+          strokeColor: '#fff'		
+        },
       title: event.name,
     });
 
